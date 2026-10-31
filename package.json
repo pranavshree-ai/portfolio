@@ -1,0 +1,11 @@
+{
+  "name": "pranav-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production Machine Learning & LLMOps Portfolio",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev",
+    "server": "node server/server.js"
+  }
+}

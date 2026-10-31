@@ -67,3 +67,4 @@ Navigate to `http://localhost:5175/admin` (or press `Ctrl + Shift + A`) to acces
 ## 📄 License
 
 MIT License © 2026 Pranav Jadhav
+
