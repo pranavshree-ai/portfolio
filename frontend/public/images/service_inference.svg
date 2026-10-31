@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#0f2b1d" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#05070a" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141a22"/>
+      <stop offset="100%" stop-color="#090d12"/>
+    </linearGradient>
+    <linearGradient id="emeraldBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bgGlow)"/>
+
+  <!-- Top Bar -->
+  <rect x="80" y="60" width="1440" height="70" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="120" cy="95" r="8" fill="#EF4444"/>
+  <circle cx="145" cy="95" r="8" fill="#F59E0B"/>
+  <circle cx="170" cy="95" r="8" fill="#10B981"/>
+  <text x="210" y="102" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" letter-spacing="1">DISTILBERT SENTIMENT PIPELINE</text>
+  <text x="540" y="102" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#10B981">// PRODUCTION ML &amp; FEAST FEATURE STORE</text>
+  <rect x="1340" y="78" width="150" height="34" rx="17" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="1"/>
+  <text x="1415" y="100" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#10B981" text-anchor="middle">ONLINE INFERENCE</text>
+
+  <!-- Left: Model Metrics & Feature Store -->
+  <rect x="80" y="160" width="460" height="680" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="120" y="210" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">PERFORMANCE TELEMETRY</text>
+
+  <!-- Metric 1 -->
+  <rect x="120" y="240" width="380" height="90" rx="14" fill="#0c1117" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="275" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.5)">Classification Accuracy</text>
+  <text x="145" y="312" font-family="'Inter', sans-serif" font-size="32" font-weight="800" fill="#10B981">92.4%</text>
+  <text x="430" y="295" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">F1: 0.924</text>
+
+  <!-- Metric 2 -->
+  <rect x="120" y="350" width="380" height="90" rx="14" fill="#0c1117" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="385" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.5)">Inference Latency (p50)</text>
+  <text x="145" y="422" font-family="'Inter', sans-serif" font-size="32" font-weight="800" fill="#38BDF8">42ms</text>
+  <text x="390" y="405" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#38BDF8">ONNX INT8</text>
+
+  <!-- Metric 3 -->
+  <rect x="120" y="460" width="380" height="90" rx="14" fill="#0c1117" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="495" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.5)">Training Speedup (PyTorch Lightning)</text>
+  <text x="145" y="532" font-family="'Inter', sans-serif" font-size="32" font-weight="800" fill="#A855F7">2.3x</text>
+  <text x="410" y="515" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.5)">Mixed Precision</text>
+
+  <!-- Feature Store Status -->
+  <rect x="120" y="570" width="380" height="230" rx="14" fill="#0c1117" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="605" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">INFRASTRUCTURE STACK</text>
+  <text x="145" y="640" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">• Feast Feature Store (Online Redis)</text>
+  <text x="145" y="675" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">• MLflow Model Registry</text>
+  <text x="145" y="710" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">• Evidently AI Drift Detection</text>
+  <text x="145" y="745" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">• Nginx Canary Traffic Routing (90/10)</text>
+  <text x="145" y="780" font-family="'Inter', sans-serif" font-size="14" fill="#10B981">✓ Multi-Container Docker Compose Active</text>
+
+  <!-- Center & Right: Pipeline Flow & Live Prediction Stream -->
+  <rect x="570" y="160" width="950" height="680" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="610" y="210" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">REAL-TIME INFERENCE &amp; LATENCY BENCHMARK</text>
+
+  <!-- Latency Chart Area -->
+  <rect x="610" y="240" width="870" height="280" rx="14" fill="#0c1117" stroke="rgba(255,255,255,0.05)"/>
+  
+  <!-- Grid lines -->
+  <line x1="650" y1="300" x2="1440" y2="300" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+  <line x1="650" y1="370" x2="1440" y2="370" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+  <line x1="650" y1="440" x2="1440" y2="440" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+
+  <!-- Waveform / Chart Path -->
+  <path d="M650 420 Q720 410 780 430 T910 370 T1040 390 T1170 340 T1300 360 T1440 330" fill="none" stroke="#10B981" stroke-width="4"/>
+  <circle cx="1170" cy="340" r="6" fill="#10B981"/>
+  <circle cx="1440" cy="330" r="6" fill="#38BDF8"/>
+  <text x="650" y="280" font-family="'Inter', sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">Latency (ms) over 10,000 requests</text>
+  <text x="1350" y="315" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#38BDF8">42ms p50</text>
+
+  <!-- Bottom: Prediction Feed -->
+  <rect x="610" y="550" width="870" height="250" rx="14" fill="#0c1117" stroke="rgba(255,255,255,0.05)"/>
+  <text x="640" y="590" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">LIVE INFERENCE STREAM</text>
+
+  <!-- Row 1 -->
+  <text x="640" y="630" font-family="'Fira Code', monospace" font-size="13" fill="#A5B4FC">INPUT: "Outstanding customer service and rapid turnaround times."</text>
+  <text x="1320" y="630" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#10B981">POSITIVE (0.98)</text>
+
+  <!-- Row 2 -->
+  <text x="640" y="675" font-family="'Fira Code', monospace" font-size="13" fill="#A5B4FC">INPUT: "Delivery took twice as long as expected with damaged packaging."</text>
+  <text x="1320" y="675" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#EF4444">NEGATIVE (0.96)</text>
+
+  <!-- Row 3 -->
+  <text x="640" y="720" font-family="'Fira Code', monospace" font-size="13" fill="#A5B4FC">INPUT: "Decent interface, average load speed on mobile devices."</text>
+  <text x="1320" y="720" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#F59E0B">NEUTRAL (0.84)</text>
+
+  <!-- Status -->
+  <text x="640" y="768" font-family="'Inter', sans-serif" font-size="13" fill="#10B981">● Serving via FastAPI + Redis Cache • 0.00% Error Rate • 248 req/s throughput</text>
+</svg>

@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" width="1200" height="450">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0d14"/>
+      <stop offset="50%" stop-color="#07090e"/>
+      <stop offset="100%" stop-color="#040608"/>
+    </linearGradient>
+
+    <!-- Zone Gradients -->
+    <linearGradient id="leftGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(168, 85, 247, 0.25)"/>
+      <stop offset="100%" stop-color="rgba(168, 85, 247, 0.02)"/>
+    </linearGradient>
+    <linearGradient id="centerGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(56, 189, 248, 0.28)"/>
+      <stop offset="100%" stop-color="rgba(56, 189, 248, 0.02)"/>
+    </linearGradient>
+    <linearGradient id="rightGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(16, 185, 129, 0.25)"/>
+      <stop offset="100%" stop-color="rgba(16, 185, 129, 0.02)"/>
+    </linearGradient>
+
+    <!-- Wireframe Grids -->
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255, 255, 255, 0.035)" stroke-width="1"/>
+    </pattern>
+
+    <filter id="neonPurple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="neonCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="neonGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Obsidian Canvas -->
+  <rect width="1200" height="450" fill="url(#bgGrad)"/>
+  <rect width="1200" height="450" fill="url(#grid)"/>
+
+  <!-- Top Accent Bar -->
+  <rect x="0" y="0" width="1200" height="2" fill="url(#centerGlow)"/>
+
+  <!-- ==================== LEFT THIRD: MULTI-AGENT ORCHESTRATION (0 - 400) ==================== -->
+  <rect x="20" y="20" width="360" height="410" rx="16" fill="url(#leftGlow)" stroke="rgba(168, 85, 247, 0.2)" stroke-width="1"/>
+  
+  <!-- Zone 1 Header -->
+  <g transform="translate(44, 52)">
+    <circle cx="8" cy="8" r="5" fill="#a855f7" filter="url(#neonPurple)"/>
+    <text x="24" y="12" fill="#d8b4fe" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">PIPELINE 01 — AGENTIC LOOPS</text>
+    <text x="0" y="44" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.5">Multi-Agent Content Suite</text>
+    <text x="0" y="66" fill="rgba(255, 255, 255, 0.55)" font-family="-apple-system, sans-serif" font-size="12">Autonomous Planner → Writer → Critic Architecture</text>
+  </g>
+
+  <!-- Agent Flow Diagram -->
+  <g transform="translate(44, 150)">
+    <!-- Node 1: Planner -->
+    <rect x="0" y="0" width="85" height="48" rx="8" fill="rgba(168, 85, 247, 0.15)" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1"/>
+    <text x="14" y="22" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Planner</text>
+    <text x="14" y="38" fill="#c084fc" font-family="-apple-system, sans-serif" font-size="9">Brief Breakdown</text>
+
+    <!-- Arrow 1 -->
+    <path d="M 90 24 L 115 24" stroke="rgba(168, 85, 247, 0.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- Node 2: Writer -->
+    <rect x="120" y="0" width="85" height="48" rx="8" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="134" y="22" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Writer</text>
+    <text x="134" y="38" fill="#c084fc" font-family="-apple-system, sans-serif" font-size="9">Claude 3.5 Sonnet</text>
+
+    <!-- Arrow 2 -->
+    <path d="M 210 24 L 235 24" stroke="rgba(168, 85, 247, 0.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- Node 3: Critic -->
+    <rect x="240" y="0" width="85" height="48" rx="8" fill="rgba(168, 85, 247, 0.15)" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1"/>
+    <text x="254" y="22" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Critic</text>
+    <text x="254" y="38" fill="#c084fc" font-family="-apple-system, sans-serif" font-size="9">Rubric Scoring</text>
+
+    <!-- Loopback Arrow -->
+    <path d="M 282 54 L 282 82 L 162 82 L 162 54" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+    <polygon points="162,50 158,58 166,58" fill="#a855f7"/>
+    <text x="180" y="78" fill="#e9d5ff" font-family="-apple-system, sans-serif" font-size="9" font-weight="600">Self-Correction Loop (≤3 Retries)</text>
+  </g>
+
+  <!-- Metric Badges -->
+  <g transform="translate(44, 275)">
+    <rect x="0" y="0" width="150" height="50" rx="8" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="14" y="24" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">75%</text>
+    <text x="14" y="40" fill="rgba(255, 255, 255, 0.6)" font-family="-apple-system, sans-serif" font-size="10">Authoring Speedup</text>
+
+    <rect x="162" y="0" width="150" height="50" rx="8" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="176" y="24" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">100%</text>
+    <text x="176" y="40" fill="rgba(255, 255, 255, 0.6)" font-family="-apple-system, sans-serif" font-size="10">Pydantic Schemas</text>
+  </g>
+
+  <!-- ==================== CENTER THIRD: LLM-AS-JUDGE CI/CD (400 - 800) ==================== -->
+  <rect x="420" y="20" width="360" height="410" rx="16" fill="url(#centerGlow)" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1"/>
+  
+  <!-- Zone 2 Header -->
+  <g transform="translate(444, 52)">
+    <circle cx="8" cy="8" r="5" fill="#38bdf8" filter="url(#neonCyan)"/>
+    <text x="24" y="12" fill="#7dd3fc" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">PIPELINE 02 — EVALUATION CI/CD</text>
+    <text x="0" y="44" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.5">Automated LLM-as-Judge</text>
+    <text x="0" y="66" fill="rgba(255, 255, 255, 0.55)" font-family="-apple-system, sans-serif" font-size="12">Dual-Judge Observability &amp; Drift Automation</text>
+  </g>
+
+  <!-- Telemetry Graph Visual -->
+  <g transform="translate(444, 150)">
+    <!-- Radar / Bar Grid -->
+    <rect x="0" y="0" width="312" height="100" rx="10" fill="rgba(15, 23, 42, 0.6)" stroke="rgba(56, 189, 248, 0.15)"/>
+    
+    <!-- Mini Metric bars -->
+    <text x="14" y="24" fill="rgba(255, 255, 255, 0.7)" font-family="-apple-system, sans-serif" font-size="10">Factuality Score</text>
+    <rect x="110" y="14" width="140" height="10" rx="5" fill="rgba(255, 255, 255, 0.08)"/>
+    <rect x="110" y="14" width="132" height="10" rx="5" fill="#38bdf8"/>
+    <text x="260" y="23" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="10" font-weight="700">96.2%</text>
+
+    <text x="14" y="48" fill="rgba(255, 255, 255, 0.7)" font-family="-apple-system, sans-serif" font-size="10">Toxicity Guardrail</text>
+    <rect x="110" y="38" width="140" height="10" rx="5" fill="rgba(255, 255, 255, 0.08)"/>
+    <rect x="110" y="38" width="137" height="10" rx="5" fill="#38bdf8"/>
+    <text x="260" y="47" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="10" font-weight="700">99.1%</text>
+
+    <text x="14" y="72" fill="rgba(255, 255, 255, 0.7)" font-family="-apple-system, sans-serif" font-size="10">Drift Detection</text>
+    <rect x="110" y="62" width="140" height="10" rx="5" fill="rgba(255, 255, 255, 0.08)"/>
+    <rect x="110" y="62" width="128" height="10" rx="5" fill="#10b981"/>
+    <text x="260" y="71" fill="#10b981" font-family="-apple-system, sans-serif" font-size="10" font-weight="700">Evidently</text>
+    
+    <text x="14" y="92" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="9" font-weight="600">⚡ GitHub Actions Automated Trigger on Model Push</text>
+  </g>
+
+  <!-- Metric Badges -->
+  <g transform="translate(444, 275)">
+    <rect x="0" y="0" width="150" height="50" rx="8" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="14" y="24" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">94%</text>
+    <text x="14" y="40" fill="rgba(255, 255, 255, 0.6)" font-family="-apple-system, sans-serif" font-size="10">Inter-Judge Agreement</text>
+
+    <rect x="162" y="0" width="150" height="50" rx="8" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="176" y="24" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">&lt;50ms</text>
+    <text x="176" y="40" fill="rgba(255, 255, 255, 0.6)" font-family="-apple-system, sans-serif" font-size="10">p50 Judge Latency</text>
+  </g>
+
+  <!-- ==================== RIGHT THIRD: CONTINUOUS MLOPS & CANARY (800 - 1200) ==================== -->
+  <rect x="820" y="20" width="360" height="410" rx="16" fill="url(#rightGlow)" stroke="rgba(16, 185, 129, 0.22)" stroke-width="1"/>
+  
+  <!-- Zone 3 Header -->
+  <g transform="translate(844, 52)">
+    <circle cx="8" cy="8" r="5" fill="#10b981" filter="url(#neonGreen)"/>
+    <text x="24" y="12" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">PIPELINE 03 — PRODUCTION DEPLOY</text>
+    <text x="0" y="44" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.5">Continuous MLOps &amp; Canary</text>
+    <text x="0" y="66" fill="rgba(255, 255, 255, 0.55)" font-family="-apple-system, sans-serif" font-size="12">Feast Feature Store → ONNX → Zero Downtime</text>
+  </g>
+
+  <!-- Deployment Stages -->
+  <g transform="translate(844, 150)">
+    <rect x="0" y="0" width="95" height="48" rx="8" fill="rgba(16, 185, 129, 0.15)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1"/>
+    <text x="12" y="20" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Feast + Redis</text>
+    <text x="12" y="36" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="9">Real-Time Store</text>
+
+    <path d="M 100 24 L 115 24" stroke="rgba(16, 185, 129, 0.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <rect x="120" y="0" width="90" height="48" rx="8" fill="rgba(16, 185, 129, 0.15)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1"/>
+    <text x="12" y="20" transform="translate(120, 0)" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">ONNX INT8</text>
+    <text x="12" y="36" transform="translate(120, 0)" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="9">1.8x Latency Drop</text>
+
+    <path d="M 215 24 L 230 24" stroke="rgba(16, 185, 129, 0.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <rect x="235" y="0" width="77" height="48" rx="8" fill="rgba(16, 185, 129, 0.25)" stroke="#10b981" stroke-width="1.5"/>
+    <text x="12" y="20" transform="translate(235, 0)" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Canary</text>
+    <text x="12" y="36" transform="translate(235, 0)" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="9">Nginx 90/10</text>
+
+    <!-- Pipeline Status Pill -->
+    <rect x="0" y="64" width="312" height="28" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.25)"/>
+    <circle cx="16" cy="78" r="4" fill="#10b981"/>
+    <text x="28" y="82" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">Automated Rollback Trigger on Health Check Failure</text>
+  </g>
+
+  <!-- Metric Badges -->
+  <g transform="translate(844, 275)">
+    <rect x="0" y="0" width="150" height="50" rx="8" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="14" y="24" fill="#10b981" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">42ms</text>
+    <text x="14" y="40" fill="rgba(255, 255, 255, 0.6)" font-family="-apple-system, sans-serif" font-size="10">p50 Inference</text>
+
+    <rect x="162" y="0" width="150" height="50" rx="8" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
+    <text x="176" y="24" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">92.4%</text>
+    <text x="176" y="40" fill="rgba(255, 255, 255, 0.6)" font-family="-apple-system, sans-serif" font-size="10">Production F1-Score</text>
+  </g>
+
+  <!-- Outer Glass Border -->
+  <rect x="0" y="0" width="1200" height="450" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="2"/>
+</svg>

@@ -1,0 +1,41 @@
+/* --------------------------------------------------
+   SmokeType Component Styles (React Bits Pro Spec)
+   Letter-by-letter smoke condensation scroll effect
+-------------------------------------------------- */
+
+.smoke-type-container {
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+  line-height: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.smoke-word {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.28em;
+  position: relative;
+}
+
+.smoke-char {
+  display: inline-block;
+  position: relative;
+  will-change: transform, filter, opacity, color;
+  transition: text-shadow 0.3s ease;
+}
+
+.smoke-char:hover {
+  text-shadow: 0 0 12px var(--accent-orange, #FF5B26);
+}
+
+.smoke-highlight-word {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.28em;
+  position: relative;
+}

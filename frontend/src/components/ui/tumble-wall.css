@@ -1,0 +1,536 @@
+/* ==========================================================================
+   Tumble Wall Component (@reactbits.dev/docs/components/tumble-wall)
+   Seamless, High-Performance 120FPS Physics Arena
+   Zero Box Enclosure • Seamless Background • Zero Scroll Lag
+   STRICTLY ZERO TAILWIND DEPENDENCIES
+   ========================================================================== */
+
+.tw-section {
+  position: relative;
+  width: 100%;
+  margin-top: 48px;
+  padding-bottom: 96px;
+  box-sizing: border-box;
+}
+
+/* Header & Controls Bar */
+.tw-header-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tw-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tw-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-style: italic;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.tw-subtitle {
+  font-family: var(--font-body, -apple-system, sans-serif);
+  font-size: 14px;
+  color: #a1a1aa;
+  max-width: 620px;
+  margin: 0 auto 16px;
+  line-height: 1.55;
+}
+
+/* Control Pills & Filter Bar */
+.tw-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 96%;
+  max-width: 1400px;
+  margin: 0 auto 14px;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+.tw-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tw-filter-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.tw-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tw-filter-btn.active {
+  background: rgba(0, 240, 255, 0.12);
+  color: #00f0ff;
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.tw-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tw-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e4e4e7;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.tw-action-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.tw-action-btn.primary {
+  background: rgba(0, 240, 255, 0.12);
+  color: #00f0ff;
+  border-color: rgba(0, 240, 255, 0.35);
+}
+
+.tw-action-btn.primary:hover {
+  background: rgba(0, 240, 255, 0.22);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.28);
+}
+
+/* ==========================================================================
+   SEAMLESS IMMERSIVE STAGE (NO BOX, NO HEAVY BORDERS, NO BLURS)
+   ========================================================================== */
+.tw-stage-container {
+  position: relative;
+  width: 96%;
+  max-width: 1400px;
+  height: 600px;
+  min-height: 540px;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+
+/* Subtle Floor Glow & Horizon Line */
+.tw-stage-floor-glow {
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  bottom: 0;
+  height: 110px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(0, 240, 255, 0.08) 0%, transparent 75%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tw-stage-floor-line {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.14) 25%, rgba(0, 240, 255, 0.45) 50%, rgba(255, 255, 255, 0.14) 75%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Instruction Prompt */
+.tw-hint-badge {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(10, 14, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: monospace;
+  font-size: 10.5px;
+  color: #71717a;
+  pointer-events: none;
+  z-index: 10;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.tw-hint-desktop {
+  display: inline;
+}
+
+.tw-hint-touch {
+  display: none;
+}
+
+@media (hover: none) and (pointer: coarse), (max-width: 640px) {
+  .tw-hint-desktop {
+    display: none;
+  }
+  .tw-hint-touch {
+    display: inline;
+  }
+}
+
+.tw-hint-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00f0ff;
+  box-shadow: 0 0 6px #00f0ff;
+  animation: twPulse 2s infinite ease-in-out;
+}
+
+@keyframes twPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Tumbling Items Layer */
+.tw-items-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   TUMBLING ITEMS (Hardware-accelerated, zero backdrop-filter lag)
+   ========================================================================== */
+.tw-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0d1118;
+  color: #ffffff;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  will-change: transform, opacity, filter;
+  contain: layout style;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.16);
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.tw-item:hover {
+  border-color: rgba(0, 240, 255, 0.6) !important;
+  box-shadow: 0 12px 28px -4px rgba(0, 240, 255, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.28) !important;
+  z-index: 80 !important;
+}
+
+.tw-item.dragging {
+  cursor: grabbing !important;
+  border-color: rgba(0, 240, 255, 0.85) !important;
+  box-shadow: 0 18px 40px -4px rgba(0, 240, 255, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
+  z-index: 100 !important;
+}
+
+.tw-item.dimmed {
+  opacity: 0.12 !important;
+  filter: grayscale(90%) blur(0.4px) !important;
+  pointer-events: none !important;
+}
+
+/* Item Specular Sheen */
+.tw-item-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Circle Shape Style */
+.tw-item.shape-circle {
+  border-radius: 50%;
+  flex-direction: column;
+  padding: 8px;
+  text-align: center;
+}
+
+.tw-item.shape-circle .tw-item-logo {
+  width: 48%;
+  height: 48%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.6));
+  transition: transform 0.18s ease;
+}
+
+.tw-item.shape-circle:hover .tw-item-logo {
+  transform: scale(1.1);
+}
+
+.tw-item.shape-circle .tw-item-title {
+  margin-top: 5px;
+  font-family: var(--font-body, -apple-system, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  color: #f4f4f5;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  pointer-events: none;
+}
+
+/* Chip / Capsule Shape Style */
+.tw-item.shape-chip {
+  border-radius: 9999px;
+  flex-direction: row;
+  padding: 0 15px 0 10px;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.tw-item.shape-chip .tw-item-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.tw-item.shape-chip .tw-item-title {
+  font-family: var(--font-body, -apple-system, sans-serif);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #f4f4f5;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.tw-item.shape-chip .tw-item-category {
+  font-family: monospace;
+  font-size: 8.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #71717a;
+  margin-left: 2px;
+  pointer-events: none;
+}
+
+/* Floating Tooltip */
+.tw-tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -100%);
+  margin-top: -10px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: #090d14;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 240, 255, 0.2);
+  color: #ffffff;
+  pointer-events: none;
+  z-index: 200;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.tw-tooltip.visible {
+  opacity: 1;
+}
+
+.tw-tooltip-title {
+  font-family: var(--font-body, -apple-system, sans-serif);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.tw-tooltip-meta {
+  font-family: monospace;
+  font-size: 9.5px;
+  color: #38bdf8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Light Mode (White Porcelain Theme)
+   ========================================================================== */
+[data-theme="light"] .tw-section,
+body.theme-light .tw-section {
+  background: #f8fafc !important;
+}
+
+[data-theme="light"] .tw-title,
+body.theme-light .tw-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .tw-subtitle,
+body.theme-light .tw-subtitle {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .tw-filter-btn,
+body.theme-light .tw-filter-btn {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  color: #475569 !important;
+}
+
+[data-theme="light"] .tw-filter-btn.active,
+body.theme-light .tw-filter-btn.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
+}
+
+[data-theme="light"] .tw-action-btn,
+body.theme-light .tw-action-btn {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .tw-action-btn.primary,
+body.theme-light .tw-action-btn.primary {
+  background: rgba(2, 132, 199, 0.1) !important;
+  color: #0284c7 !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+}
+
+[data-theme="light"] .tw-stage-floor-glow,
+body.theme-light .tw-stage-floor-glow {
+  background: radial-gradient(ellipse at 50% 100%, rgba(2, 132, 199, 0.08) 0%, transparent 75%) !important;
+}
+
+[data-theme="light"] .tw-stage-floor-line,
+body.theme-light .tw-stage-floor-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.08) 30%, rgba(2, 132, 199, 0.3) 50%, rgba(0, 0, 0, 0.08) 70%, transparent 100%) !important;
+}
+
+[data-theme="light"] .tw-item,
+body.theme-light .tw-item {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .tw-item-title,
+body.theme-light .tw-item-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .tw-item-desc,
+body.theme-light .tw-item-desc {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .tw-hint-badge,
+body.theme-light .tw-hint-badge {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #64748b !important;
+}
+
+@media (max-width: 900px) {
+  .tw-stage-container {
+    height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tw-stage-container {
+    height: 460px;
+  }
+  .tw-item.shape-circle {
+    padding: 3px;
+  }
+  .tw-item.shape-circle .tw-item-title {
+    margin-top: 2px;
+    font-size: 8.5px;
+    max-width: 96%;
+  }
+  .tw-item.shape-circle .tw-item-logo {
+    width: 44%;
+    height: 44%;
+  }
+  .tw-item.shape-chip {
+    padding: 0 8px 0 6px;
+    gap: 4px;
+  }
+  .tw-item.shape-chip .tw-item-logo {
+    width: 16px;
+    height: 16px;
+  }
+  .tw-item.shape-chip .tw-item-title {
+    font-size: 10px;
+  }
+  .tw-item.shape-chip .tw-item-category {
+    display: none;
+  }
+  .tw-filter-btn {
+    font-size: 9.5px;
+    padding: 4px 8px;
+  }
+  .tw-action-btn {
+    font-size: 9.5px;
+    padding: 4px 8px;
+  }
+}

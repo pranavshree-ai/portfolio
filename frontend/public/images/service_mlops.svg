@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="visBg" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#05070a" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151e2e"/>
+      <stop offset="100%" stop-color="#0b1019"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#visBg)"/>
+
+  <!-- Top Bar -->
+  <rect x="80" y="60" width="1440" height="70" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="120" cy="95" r="8" fill="#EF4444"/>
+  <circle cx="145" cy="95" r="8" fill="#F59E0B"/>
+  <circle cx="170" cy="95" r="8" fill="#10B981"/>
+  <text x="210" y="102" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" letter-spacing="1">RESNET-18 VISION CLASSIFIER &amp; GRAD-CAM</text>
+  <text x="670" y="102" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#38BDF8">// MODEL INTERPRETABILITY &amp; MLFLOW REGISTRY</text>
+
+  <!-- Left: Grad-CAM Saliency Visualization -->
+  <rect x="80" y="160" width="680" height="680" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="120" y="210" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">GRAD-CAM SALIENCY HEATMAP</text>
+
+  <!-- Heatmap simulation -->
+  <rect x="120" y="240" width="600" height="420" rx="14" fill="#090d14" stroke="rgba(255,255,255,0.05)"/>
+  <circle cx="420" cy="450" r="140" fill="#EF4444" fill-opacity="0.3" filter="blur(30px)"/>
+  <circle cx="400" cy="440" r="80" fill="#F59E0B" fill-opacity="0.5" filter="blur(20px)"/>
+  <circle cx="390" cy="430" r="40" fill="#10B981" fill-opacity="0.7" filter="blur(10px)"/>
+  <text x="420" y="455" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">FOCAL REGION</text>
+
+  <text x="120" y="700" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">Target layer: model.layer4[1].conv2</text>
+  <text x="120" y="730" font-family="'Inter', sans-serif" font-size="14" fill="#10B981">✓ Decision validated against ground-truth feature space</text>
+
+  <!-- Right: Metrics & AWS S3 Model Registry -->
+  <rect x="800" y="160" width="720" height="680" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="840" y="210" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">MODEL SPECS &amp; MLFLOW REGISTRY</text>
+
+  <rect x="840" y="240" width="640" height="120" rx="14" fill="#090d14"/>
+  <text x="870" y="280" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.5)">CIFAR-10 Test Accuracy</text>
+  <text x="870" y="325" font-family="'Inter', sans-serif" font-size="36" font-weight="800" fill="#38BDF8">93.7%</text>
+  <text x="1250" y="305" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#10B981">Transfer Learning</text>
+
+  <rect x="840" y="380" width="640" height="240" rx="14" fill="#090d14"/>
+  <text x="870" y="420" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">DEPLOYMENT ARTIFACTS</text>
+  <text x="870" y="455" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.8)">• AWS S3 Bucket: s3://mlops-production-models/resnet18-v4.pt</text>
+  <text x="870" y="490" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.8)">• MLflow Run ID: 4a9f82d1c6e94b2a89047bf8</text>
+  <text x="870" y="525" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.8)">• Container: Docker image built with multi-stage FastAPI inference</text>
+  <text x="870" y="560" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.8)">• Latency: 16ms on GPU / 48ms on CPU</text>
+
+  <text x="840" y="670" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#10B981">● Registered in Production Stage</text>
+</svg>

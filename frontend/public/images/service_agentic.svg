@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="agBg" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#2a1438" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#05070a" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181324"/>
+      <stop offset="100%" stop-color="#0b0814"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#agBg)"/>
+
+  <!-- Top Bar -->
+  <rect x="80" y="60" width="1440" height="70" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="120" cy="95" r="8" fill="#EF4444"/>
+  <circle cx="145" cy="95" r="8" fill="#F59E0B"/>
+  <circle cx="170" cy="95" r="8" fill="#10B981"/>
+  <text x="210" y="102" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" letter-spacing="1">MULTI-AGENT GENERATION WORKFLOW</text>
+  <text x="640" y="102" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#C084FC">// PLANNER → WRITER → CRITIC AUTONOMOUS SYSTEM</text>
+
+  <!-- Node 1: Planner Agent -->
+  <rect x="100" y="200" width="380" height="580" rx="18" fill="url(#cardGrad)" stroke="rgba(192,132,252,0.3)"/>
+  <rect x="130" y="230" width="90" height="28" rx="14" fill="#C084FC" fill-opacity="0.2"/>
+  <text x="175" y="249" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#C084FC" text-anchor="middle">AGENT 01</text>
+  <text x="130" y="295" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">PLANNER</text>
+  <text x="130" y="325" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Deconstructs brief into structured schema</text>
+
+  <rect x="130" y="350" width="320" height="200" rx="12" fill="#0d0a17"/>
+  <text x="150" y="380" font-family="'Fira Code', monospace" font-size="12" fill="#C084FC">class PlanSchema(BaseModel):</text>
+  <text x="165" y="405" font-family="'Fira Code', monospace" font-size="12" fill="#E2E8F0">  topic: str</text>
+  <text x="165" y="430" font-family="'Fira Code', monospace" font-size="12" fill="#E2E8F0">  key_arguments: List[str]</text>
+  <text x="165" y="455" font-family="'Fira Code', monospace" font-size="12" fill="#E2E8F0">  target_audience: str</text>
+  <text x="165" y="480" font-family="'Fira Code', monospace" font-size="12" fill="#E2E8F0">  tone: ToneEnum</text>
+  <text x="165" y="505" font-family="'Fira Code', monospace" font-size="12" fill="#E2E8F0">  outline_sections: int</text>
+
+  <text x="130" y="585" font-family="'Inter', sans-serif" font-size="13" fill="#10B981">✓ Outline generated (5 sections)</text>
+  <text x="130" y="615" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.7)">Dynamic Few-Shot Prompt Selected</text>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M490 490 L590 490" stroke="#C084FC" stroke-width="3" stroke-dasharray="6"/>
+  <polygon points="590,490 575,482 575,498" fill="#C084FC"/>
+
+  <!-- Node 2: Writer Agent -->
+  <rect x="610" y="200" width="380" height="580" rx="18" fill="url(#cardGrad)" stroke="rgba(56,189,248,0.3)"/>
+  <rect x="640" y="230" width="90" height="28" rx="14" fill="#38BDF8" fill-opacity="0.2"/>
+  <text x="685" y="249" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#38BDF8" text-anchor="middle">AGENT 02</text>
+  <text x="640" y="295" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">WRITER</text>
+  <text x="640" y="325" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Drafts sections via SSE streaming</text>
+
+  <rect x="640" y="350" width="320" height="200" rx="12" fill="#0d0a17"/>
+  <text x="660" y="380" font-family="'Fira Code', monospace" font-size="12" fill="#38BDF8">SSE Streaming Active...</text>
+  <text x="660" y="410" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.85)">"Modern ML systems must bridge</text>
+  <text x="660" y="435" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.85)">the gap between exploratory notebooks</text>
+  <text x="660" y="460" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.85)">and hardened production servers</text>
+  <text x="660" y="485" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.85)">with automated verification..."</text>
+
+  <text x="640" y="585" font-family="'Inter', sans-serif" font-size="13" fill="#10B981">✓ Draft complete (1,420 tokens)</text>
+  <text x="640" y="615" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.7)">Anthropic Claude API (Sonnet)</text>
+
+  <!-- Arrow 2 to 3 -->
+  <path d="M1000 490 L1100 490" stroke="#38BDF8" stroke-width="3" stroke-dasharray="6"/>
+  <polygon points="1100,490 1085,482 1085,498" fill="#38BDF8"/>
+
+  <!-- Node 3: Critic Agent -->
+  <rect x="1120" y="200" width="380" height="580" rx="18" fill="url(#cardGrad)" stroke="rgba(16,185,129,0.3)"/>
+  <rect x="1150" y="230" width="90" height="28" rx="14" fill="#10B981" fill-opacity="0.2"/>
+  <text x="1195" y="249" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#10B981" text-anchor="middle">AGENT 03</text>
+  <text x="1150" y="295" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">CRITIC</text>
+  <text x="1150" y="325" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Evaluates against rubric with auto-retry</text>
+
+  <rect x="1150" y="350" width="320" height="200" rx="12" fill="#0d0a17"/>
+  <text x="1170" y="380" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">RUBRIC EVALUATION</text>
+  <text x="1170" y="415" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.8)">• Coherence: 9.6 / 10</text>
+  <text x="1170" y="445" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.8)">• Factuality: 9.8 / 10</text>
+  <text x="1170" y="475" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.8)">• Tone Alignment: 9.4 / 10</text>
+  <text x="1170" y="505" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#10B981">STATUS: APPROVED</text>
+
+  <text x="1150" y="585" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#10B981">✓ 75% Reduction in Manual Time</text>
+  <text x="1150" y="615" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.7)">Auto-retry loop bypassed (score >= 9.0)</text>
+</svg>

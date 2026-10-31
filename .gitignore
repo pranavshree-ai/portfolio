@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production build outputs
+dist/
+frontend/dist/
+dist-ssr/
+*.local
+
+# Cache, logs, and temporary directories
+.vite/
+scratch/
+tools/
+*.log
+
+# Backend build targets
+target/
+backend/target/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE / Editor files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

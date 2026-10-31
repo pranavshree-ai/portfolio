@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="ragBg" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#111c38" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#05070a" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#090d14"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#ragBg)"/>
+
+  <!-- Top Bar -->
+  <rect x="80" y="60" width="1440" height="70" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="120" cy="95" r="8" fill="#EF4444"/>
+  <circle cx="145" cy="95" r="8" fill="#F59E0B"/>
+  <circle cx="170" cy="95" r="8" fill="#10B981"/>
+  <text x="210" y="102" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" letter-spacing="1">HYBRID RAG DOCUMENT Q&amp;A ASSISTANT</text>
+  <text x="660" y="102" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#38BDF8">// FAISS DENSE + BM25 SPARSE HYBRID RETRIEVAL</text>
+
+  <!-- Left: Ingestion & Hybrid Pipeline -->
+  <rect x="80" y="160" width="500" height="680" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="120" y="210" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">HYBRID RETRIEVAL PIPELINE</text>
+
+  <rect x="120" y="240" width="420" height="110" rx="14" fill="#0a0f18" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="275" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#38BDF8">01. INGESTION &amp; CHUNKING</text>
+  <text x="145" y="305" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">PDF/TXT Multi-format parser with token-aware</text>
+  <text x="145" y="328" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">recursive chunking &amp; metadata preservation</text>
+
+  <rect x="120" y="370" width="420" height="110" rx="14" fill="#0a0f18" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="405" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#A855F7">02. DUAL VECTOR &amp; SPARSE INDEX</text>
+  <text x="145" y="435" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">FAISS IndexFlatIP (Sentence-BERT embeddings)</text>
+  <text x="145" y="458" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">+ Rank-BM25 exact keyword matching</text>
+
+  <rect x="120" y="500" width="420" height="110" rx="14" fill="#0a0f18" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="535" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#10B981">03. RECIPROCAL RANK FUSION (RRF)</text>
+  <text x="145" y="565" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Re-ranking candidate chunks with RRF scoring</text>
+  <text x="145" y="588" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Eliminates dense retrieval blind spots</text>
+
+  <rect x="120" y="630" width="420" height="170" rx="14" fill="#0a0f18" stroke="rgba(255,255,255,0.05)"/>
+  <text x="145" y="665" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#F59E0B">04. GUARDRAILS &amp; VERIFICATION</text>
+  <text x="145" y="698" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">• Strict domain-grounded prompt templates</text>
+  <text x="145" y="728" font-family="'Inter', sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">• Chunk-level source citation mapping</text>
+  <text x="145" y="758" font-family="'Inter', sans-serif" font-size="13" fill="#10B981">✓ Zero-Hallucination verification filter</text>
+
+  <!-- Right: Q&A Chat & Source Citations -->
+  <rect x="610" y="160" width="910" height="680" rx="20" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="650" y="210" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">STREAMLIT &amp; FASTAPI CONVERSATIONAL INTERFACE</text>
+
+  <!-- Question -->
+  <rect x="650" y="240" width="830" height="75" rx="14" fill="#0f172a" stroke="rgba(56,189,248,0.2)"/>
+  <text x="680" y="275" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#38BDF8">USER INQUIRY</text>
+  <text x="680" y="300" font-family="'Inter', sans-serif" font-size="15" fill="#FFFFFF">"What are the compliance requirements for model registry approvals under Section 4?"</text>
+
+  <!-- Answer with Citations -->
+  <rect x="650" y="340" width="830" height="260" rx="14" fill="#0a0f18" stroke="rgba(255,255,255,0.05)"/>
+  <text x="680" y="375" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#10B981">ASSISTANT RESPONSE (Grounded via Claude API)</text>
+  <text x="680" y="410" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.9)">Under Section 4.2 of the compliance framework, model registry promotion requires:</text>
+  <text x="680" y="440" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.9)">1. Completed inter-rater evaluation score exceeding 90% threshold [Doc-A, p. 14]</text>
+  <text x="680" y="470" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.9)">2. Verified latency benchmark below 50ms p50 on target ONNX runtime [Doc-B, p. 28]</text>
+  <text x="680" y="500" font-family="'Inter', sans-serif" font-size="14" fill="rgba(255,255,255,0.9)">3. Automated drift telemetry active with zero unhandled schema anomalies [Doc-C, p. 5]</text>
+  <text x="680" y="550" font-family="'Inter', sans-serif" font-size="12" fill="#38BDF8">Latency: 1.84s • Chunks Retrieved: 4 • Hybrid Score: 0.942</text>
+
+  <!-- Citations Box -->
+  <rect x="650" y="620" width="830" height="180" rx="14" fill="#0f172a" stroke="rgba(255,255,255,0.05)"/>
+  <text x="680" y="655" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">SOURCE CITATIONS (VERIFIED)</text>
+  <text x="680" y="690" font-family="'Fira Code', monospace" font-size="12" fill="#94A3B8">[1] Model_Governance_v2.pdf (chunk_id: #842, cosine: 0.891, bm25: 14.2)</text>
+  <text x="680" y="720" font-family="'Fira Code', monospace" font-size="12" fill="#94A3B8">[2] Inference_Standards_2026.pdf (chunk_id: #119, cosine: 0.874, bm25: 12.8)</text>
+  <text x="680" y="750" font-family="'Fira Code', monospace" font-size="12" fill="#94A3B8">[3] Drift_Monitoring_Policy.pdf (chunk_id: #405, cosine: 0.865, bm25: 11.5)</text>
+</svg>

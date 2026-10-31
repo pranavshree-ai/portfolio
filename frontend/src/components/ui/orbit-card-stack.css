@@ -1,0 +1,337 @@
+/* ==========================================================================
+   Componentry Orbit Card Stack (@componentry/orbit-card-stack)
+   High-Fidelity Pure Vanilla CSS Implementation
+   Pitch-black obsidian glassmorphism + Cyan/Neon telemetry accents
+   STRICTLY PURE CSS - ZERO TAILWIND DEPENDENCIES
+   ========================================================================== */
+
+.ocs-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px 80px;
+  overflow: visible;
+  user-select: none;
+  -webkit-user-select: none;
+  box-sizing: border-box;
+}
+
+.ocs-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.ocs-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 310px;
+  max-width: 86vw;
+  height: 450px;
+  transform-origin: bottom center;
+  cursor: pointer;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0b0e14;
+  padding: 18px;
+  color: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 300ms ease;
+  will-change: transform;
+}
+
+.ocs-card:focus-visible {
+  box-shadow: 0 0 0 2px #00f0ff, 0 25px 60px -10px rgba(0, 240, 255, 0.35);
+}
+
+.ocs-card.active {
+  border-color: rgba(0, 240, 255, 0.65);
+  box-shadow: 0 25px 65px -10px rgba(0, 240, 255, 0.28), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+/* Card specular sheen */
+.ocs-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Card Header Banner */
+.ocs-card-banner {
+  position: relative;
+  width: 100%;
+  height: 135px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ocs-card-glow {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  filter: blur(28px);
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.ocs-banner-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ocs-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d4d4d8;
+}
+
+.ocs-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.ocs-arrow-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a1a1aa;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.ocs-card:hover .ocs-arrow-btn,
+.ocs-card.active .ocs-arrow-btn {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ocs-banner-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.ocs-q-label {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ocs-q-num {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Card Body */
+.ocs-card-body {
+  position: relative;
+  z-index: 2;
+  padding: 12px 2px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 135px);
+  box-sizing: border-box;
+}
+
+.ocs-card-title {
+  font-family: var(--font-body, -apple-system, sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ocs-card-answer {
+  margin: 8px 0 0;
+  font-family: var(--font-body, -apple-system, sans-serif);
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #d4d4d8;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ocs-card-footer {
+  padding-top: 10px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ocs-stat-text {
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.ocs-stat-badge {
+  font-family: monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+/* FAQ Header Centering */
+.ocs-faq-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 24px;
+}
+
+.ocs-faq-subtitle {
+  margin-top: 14px;
+  font-family: var(--font-body, -apple-system, sans-serif);
+  font-size: 14.5px;
+  color: #a1a1aa;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Light Mode (White Porcelain Theme)
+   ========================================================================== */
+[data-theme="light"] .ocs-container,
+body.theme-light .ocs-container {
+  background: transparent !important;
+}
+
+[data-theme="light"] .ocs-faq-subtitle,
+body.theme-light .ocs-faq-subtitle {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .ocs-card,
+body.theme-light .ocs-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .ocs-card.active,
+body.theme-light .ocs-card.active {
+  border-color: #0284c7 !important;
+  box-shadow: 0 25px 60px rgba(2, 132, 199, 0.18) !important;
+}
+
+[data-theme="light"] .ocs-sheen {
+  display: none !important;
+}
+
+[data-theme="light"] .ocs-card-banner,
+body.theme-light .ocs-card-banner {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .ocs-tag-pill,
+body.theme-light .ocs-tag-pill {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .ocs-arrow-btn,
+body.theme-light .ocs-arrow-btn {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .ocs-card:hover .ocs-arrow-btn,
+[data-theme="light"] .ocs-card.active .ocs-arrow-btn {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+}
+
+[data-theme="light"] .ocs-q-label,
+body.theme-light .ocs-q-label {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .ocs-q-num,
+body.theme-light .ocs-q-num {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .ocs-card-title,
+body.theme-light .ocs-card-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .ocs-card-answer,
+body.theme-light .ocs-card-answer {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .ocs-card-footer,
+body.theme-light .ocs-card-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .ocs-stat-text,
+body.theme-light .ocs-stat-text {
+  color: #64748b !important;
+}
