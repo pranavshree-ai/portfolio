@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="twGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#twGlow)"/>
+  <g transform="translate(45, 65) scale(1.1)">
+    <!-- Tailwind Double Wave -->
+    <path d="M50 0 C30 0 20 18 10 18 C0 18 0 10 0 10 C0 28 10 36 24 36 C44 36 54 18 64 18 C74 18 74 26 74 26 C74 8 64 0 50 0 Z" fill="#38BDF8"/>
+    <path d="M76 26 C60 26 52 42 42 42 C32 42 32 35 32 35 C32 50 40 58 52 58 C68 58 78 42 88 42 C98 42 98 50 98 50 C98 34 88 26 76 26 Z" fill="#06B6D4"/>
+  </g>
+</svg>

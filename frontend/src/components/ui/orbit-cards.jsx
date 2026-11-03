@@ -18,9 +18,9 @@ import "./orbit-cards.css";
  */
 export function OrbitCards({
   items = [],
-  orbitRadius = 250,
-  cardWidth = 156,
-  cardHeight = 188,
+  orbitRadius = 380,
+  cardWidth = 285,
+  cardHeight = 235,
   duration = 24,
   direction = "clockwise",
   orientation = "upright",
@@ -35,6 +35,8 @@ export function OrbitCards({
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [effectiveRadius, setEffectiveRadius] = useState(orbitRadius);
+  const [effectiveCardWidth, setEffectiveCardWidth] = useState(cardWidth);
+  const [effectiveCardHeight, setEffectiveCardHeight] = useState(cardHeight);
 
   const stageRef = useRef(null);
   const animFrameRef = useRef(null);
@@ -48,24 +50,34 @@ export function OrbitCards({
   const speedSign = direction === "clockwise" ? 1 : -1;
   const degPerSecond = (360 / Math.max(duration, 5)) * speedSign;
 
-  // Responsive radius scaling
+  // Responsive radius & card sizing scaling
   useEffect(() => {
     const handleResize = () => {
       if (!stageRef.current) return;
       const width = stageRef.current.clientWidth;
       if (width < 480) {
-        setEffectiveRadius(Math.min(orbitRadius * 0.72, width * 0.44));
+        setEffectiveRadius(Math.min(orbitRadius * 0.65, width * 0.44));
+        setEffectiveCardWidth(Math.min(cardWidth * 0.72, width * 0.62));
+        setEffectiveCardHeight(cardHeight * 0.76);
       } else if (width < 768) {
-        setEffectiveRadius(Math.min(orbitRadius * 0.86, width * 0.46));
+        setEffectiveRadius(Math.min(orbitRadius * 0.80, width * 0.46));
+        setEffectiveCardWidth(cardWidth * 0.84);
+        setEffectiveCardHeight(cardHeight * 0.86);
+      } else if (width < 1024) {
+        setEffectiveRadius(orbitRadius * 0.90);
+        setEffectiveCardWidth(cardWidth * 0.92);
+        setEffectiveCardHeight(cardHeight * 0.94);
       } else {
         setEffectiveRadius(orbitRadius);
+        setEffectiveCardWidth(cardWidth);
+        setEffectiveCardHeight(cardHeight);
       }
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [orbitRadius]);
+  }, [orbitRadius, cardWidth, cardHeight]);
 
   // Main Animation Loop with Momentum & Autoplay (with Viewport Pause optimization)
   useEffect(() => {
@@ -191,8 +203,8 @@ export function OrbitCards({
               data-orbit-card={i}
               data-upper={isUpper ? "true" : "false"}
               style={{
-                width: `${cardWidth}px`,
-                height: `${cardHeight}px`,
+                width: `${effectiveCardWidth}px`,
+                height: `${effectiveCardHeight}px`,
                 transform: `translate(-50%, -50%) rotate(${am.toFixed(
                   3
                 )}deg) translateY(${-effectiveRadius.toFixed(1)}px) rotate(${an.toFixed(

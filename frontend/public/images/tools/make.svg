@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="makeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D946EF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+    <linearGradient id="makeP1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7000FF"/>
+      <stop offset="100%" stop-color="#C026D3"/>
+    </linearGradient>
+    <linearGradient id="makeP2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D946EF"/>
+      <stop offset="100%" stop-color="#6B21A8"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#makeGlow)"/>
+  <g transform="translate(52, 54) scale(0.96)">
+    <!-- Make M connected shapes -->
+    <path d="M12 20 L40 76 L68 20 L96 76 L74 76 L56 40 L40 68 L24 40 L16 56 Z" fill="url(#makeP1)"/>
+    <circle cx="20" cy="24" r="14" fill="#A855F7"/>
+    <circle cx="50" cy="24" r="14" fill="#C026D3"/>
+    <circle cx="80" cy="24" r="14" fill="#E879F9"/>
+    <circle cx="35" cy="74" r="14" fill="#7C3AED"/>
+    <circle cx="65" cy="74" r="14" fill="#9333EA"/>
+  </g>
+</svg>

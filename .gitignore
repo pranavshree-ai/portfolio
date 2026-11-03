@@ -10,9 +10,11 @@ dist-ssr/
 
 # Cache, logs, and temporary directories
 .vite/
-scratch/
-tools/
+/scratch/
+/tools/
 *.log
+*.backup.*
+*.bak
 
 # Backend build targets
 target/

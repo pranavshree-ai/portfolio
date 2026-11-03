@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="nextGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+    <linearGradient id="nextSlash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#nextGlow)"/>
+  <g transform="translate(52, 52) scale(0.53)">
+    <circle cx="90" cy="90" r="85" fill="#000000" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+    <path d="M125 130 V60 H112 V110 Z" fill="#FFFFFF"/>
+    <path d="M68 60 H55 V130 H68 L124 60 Z" fill="url(#nextSlash)"/>
+    <path d="M68 60 V130 H55 V60 Z" fill="#FFFFFF"/>
+  </g>
+</svg>

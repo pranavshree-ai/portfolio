@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="pyGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3776AB" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#pyGlow)"/>
+  <g transform="translate(56, 56) scale(0.88)">
+    <path d="M49.5 0C22.6 0 24.3 11.7 24.3 11.7l.03 12.1h25.4v3.6H14.5S0 25.8 0 52.8c0 27 12.7 26.1 12.7 26.1h7.6v-10.7s-.4-12.7 12.5-12.7h25.3s12.1-.2 12.1-11.9V11.7S72.5 0 49.5 0zm-13.8 8.1c2.5 0 4.5 2 4.5 4.5s-2 4.5-4.5 4.5-4.5-2-4.5-4.5 2-4.5 4.5-4.5z" fill="#3776AB"/>
+    <path d="M50.5 100c26.9 0 25.2-11.7 25.2-11.7l-.03-12.1H50.3v-3.6h35.2s14.5 1.6 14.5-25.4c0-27-12.7-26.1-12.7-26.1h-7.6v10.7s.4 12.7-12.5 12.7H41.9s-12.1.2-12.1 11.9v12.2s-2.3 11.4 20.7 11.4zm13.8-8.1c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5 4.5 2 4.5 4.5-2 4.5-4.5 4.5z" fill="#FFD43B"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="framerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0055FF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#framerGlow)"/>
+  <g transform="translate(68, 55) scale(2.65)">
+    <path d="M0 0 H24 V12 H12 Z" fill="#0055FF"/>
+    <path d="M0 12 H12 L24 24 H0 Z" fill="#0066FF"/>
+    <path d="M0 24 H12 V36 Z" fill="#0044CC"/>
+  </g>
+</svg>

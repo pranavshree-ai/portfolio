@@ -70,15 +70,20 @@ export default function Model3DScrollCanvas() {
     // Make the lotus substantially wider across the viewport
     const imgRatio = img.naturalWidth / img.naturalHeight; // 1.0
     const canvasRatio = w / h;
+    const isPhone = w <= 640;
     let drawW, drawH;
 
     if (canvasRatio > imgRatio) {
       // Widescreen desktop: scale lotus widely (up to 88% of screen width, or 1.35x height)
       drawW = Math.max(w * 0.88, h * 1.35);
       drawH = drawW / imgRatio;
+    } else if (isPhone) {
+      // Phone view (<= 640px): enlarge lotus so petals bloom prominently across mobile screens
+      drawW = Math.max(w * 1.48, h * 0.62);
+      drawH = drawW / imgRatio;
     } else {
-      // Mobile / narrow: fill screen width
-      drawW = w * 0.96;
+      // Tablet / portrait screens (641px - 1024px)
+      drawW = Math.max(w * 1.08, h * 0.75);
       drawH = drawW / imgRatio;
     }
 
@@ -86,8 +91,9 @@ export default function Model3DScrollCanvas() {
     const scaledW = drawW * scale;
     const scaledH = drawH * scale;
     const drawX = (w - scaledW) / 2;
-    // Position vertically slightly above center so blooming petals occupy the upper center and statement text sits cleanly below
-    const drawY = (h - scaledH) / 2 - (h * 0.055);
+    // Position vertically: on phone, slight lift ensures flower sits in upper half while text is below
+    const yOffsetPercent = isPhone ? 0.075 : 0.055;
+    const drawY = (h - scaledH) / 2 - (h * yOffsetPercent);
 
     ctx.drawImage(img, drawX, drawY, scaledW, scaledH);
   }, [totalFrames]);

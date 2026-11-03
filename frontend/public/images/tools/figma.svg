@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="figmaGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A259FF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#figmaGlow)"/>
+  <g transform="translate(68, 48) scale(1.75)">
+    <!-- Top Left -->
+    <path d="M0 18 C0 8.05 8.05 0 18 0 H36 V36 H18 C8.05 36 0 27.95 0 18 Z" fill="#F24E1E"/>
+    <!-- Top Right -->
+    <path d="M36 0 H54 C63.95 0 72 8.05 72 18 C72 27.95 63.95 36 54 36 H36 V0 Z" fill="#FF7262"/>
+    <!-- Middle Left -->
+    <path d="M0 54 C0 44.05 8.05 36 18 36 H36 V72 H18 C8.05 72 0 63.95 0 54 Z" fill="#A259FF"/>
+    <!-- Middle Right -->
+    <circle cx="54" cy="54" r="18" fill="#1ABCFE"/>
+    <!-- Bottom Left Teardrop -->
+    <path d="M0 90 C0 80.05 8.05 72 18 72 H36 V90 C36 99.95 27.95 108 18 108 C8.05 108 0 99.95 0 90 Z" fill="#0ACF83"/>
+  </g>
+</svg>

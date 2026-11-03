@@ -28,7 +28,10 @@ function renderIcon(card) {
  */
 export default function ScrollSplitCard({
   imageSrc = "/images/split_card_cover.jpg",
-  cards = []
+  cards = [],
+  title = "From Manual Processes to AI-Powered Systems.",
+  subtitle = "AI That Doesn’t Just Think - It Executes",
+  scrollText = "Scroll down"
 }) {
   const trackRef = useRef(null);
   const cardsRowRef = useRef(null);
@@ -57,13 +60,13 @@ export default function ScrollSplitCard({
         }
       });
 
-      // 1. Starting Indicator: "SCROLL DOWN" fades out (0 -> 0.10)
+      // 1. Starting Header: Fades out and glides upward smoothly on scroll (0 -> 0.12)
       if (indicatorRef.current) {
         tl.to(indicatorRef.current, {
           opacity: 0,
-          y: 20,
-          duration: 0.10,
-          ease: "none"
+          y: -24,
+          duration: 0.12,
+          ease: "power1.out"
         }, 0);
       }
 
@@ -143,11 +146,23 @@ export default function ScrollSplitCard({
     <div ref={trackRef} className="ssc-track">
       <div className="ssc-sticky">
         
-        {/* Top Starting Indicator */}
+        {/* Top Starting Indicator & Section Header */}
         <div ref={indicatorRef} className="ssc-indicator">
-          <p className="ssc-indicator-text">
-            Scroll down
-          </p>
+          {title && (
+            <h2 className="ssc-header-title">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="ssc-header-subtitle">
+              {subtitle}
+            </p>
+          )}
+          {scrollText && (
+            <p className="ssc-indicator-text">
+              {scrollText} <span className="ssc-arrow">↓</span>
+            </p>
+          )}
         </div>
 
         {/* Multi-Panel Split Card Container (Dynamic width for 5 panels) */}

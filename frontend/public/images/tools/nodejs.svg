@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5FA04E" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#nodeGlow)"/>
+  <g transform="translate(50, 48) scale(1.0)">
+    <!-- Hexagonal Node Shield -->
+    <path d="M50 8 L92 32 V80 L50 104 L8 80 V32 Z" fill="#5FA04E" stroke="#68A063" stroke-width="2"/>
+    <path d="M50 8 L92 32 L50 56 L8 32 Z" fill="#68A063" opacity="0.85"/>
+    <path d="M50 56 V104 L92 80 V32 Z" fill="#4B853D" opacity="0.9"/>
+    <path d="M50 56 V104 L8 80 V32 Z" fill="#3E7231" opacity="0.95"/>
+  </g>
+</svg>

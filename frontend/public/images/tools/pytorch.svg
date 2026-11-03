@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="torchGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EE4C2C" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#torchGlow)"/>
+  <g transform="translate(58, 48) scale(0.95)">
+    <!-- PyTorch Flame Flame/Circle Icon -->
+    <path d="M43.7 0a43.5 43.5 0 0 0-30.8 74.2l9.6-9.6A29.9 29.9 0 0 1 43.7 13.6c16.5 0 29.9 13.4 29.9 29.9 0 8.3-3.3 15.8-8.8 21.2l9.6 9.6A43.4 43.4 0 0 0 43.7 0z" fill="#EE4C2C"/>
+    <path d="M57.4 20.3a6.8 6.8 0 1 0 0-13.6 6.8 6.8 0 0 0 0 13.6z" fill="#EE4C2C"/>
+  </g>
+</svg>

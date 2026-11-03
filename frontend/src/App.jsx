@@ -41,9 +41,13 @@ import ScrollSplitCard from './components/ScrollSplitCard';
 import CaseStudyFlipStack from './components/ui/case-study-flip-stack';
 import Signature from './components/ui/signature';
 import TextRepel from './components/ui/text-repel';
+import SilkAurora from './components/ui/silk-aurora';
 import OrbitCards from './components/ui/orbit-cards';
 import OrbitCardStack from './components/ui/orbit-card-stack';
 import TumbleWall from './components/ui/tumble-wall';
+import TechText from './components/ui/tech-text';
+import PrismCarousel from './components/ui/prism-carousel';
+import LoadingScreen from './components/LoadingScreen';
 import { CustomEase } from 'gsap/CustomEase';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
@@ -67,80 +71,7 @@ const TECH_STACK_LOGOS = [
 ];
 
 
-const PRANAV_PROJECTS = [
-  {
-    id: "grgpt",
-    title: "GRGPT",
-    tagline: "Govt Resolution & Tender RAG Assistant",
-    category: "Production RAG · Vector Search · GenAI",
-    link: "https://github.com/shreecloudai",
-    image: "/images/project_grgpt.png",
-    metricHighlight: "1,037,086 Vectors · 2-3s Latency",
-    description: "ChatGPT-style assistant for Maharashtra Government Resolutions and tenders, built around a domain-restricted RAG architecture over 100K+ PDFs in Qdrant.",
-    technologies: ["Qdrant", "Sentence-BERT", "RAG", "FastAPI", "Docker", "React"],
-    transformInit: { x: 80, y: -260, rotate: 6, scale: 0.65 }
-  },
-  {
-    id: "llm-eval",
-    title: "LLM-Eval",
-    tagline: "Production LLM Observability Platform",
-    category: "LLMOps · Evaluation · Telemetry",
-    link: "https://github.com/shreecloudai",
-    image: "/images/project_llmeval.png",
-    metricHighlight: "94% Agreement · <50ms p50",
-    description: "Dual AI-judge evaluation pipeline (Claude + GPT) measuring factuality, coherence, and toxicity with sub-50ms p50 inference and automated drift telemetry.",
-    technologies: ["vLLM", "Evidently AI", "MLflow", "DuckDB", "W&B", "Docker Compose"],
-    transformInit: { x: -60, y: -290, rotate: -8, scale: 0.65 }
-  },
-  {
-    id: "distilbert-mlops",
-    title: "DistilBERT MLOps",
-    tagline: "Sentiment Classifier with Advanced MLOps",
-    category: "Transformer NLP · Production ML",
-    link: "https://github.com/shreecloudai",
-    image: "/images/project_distilbert.svg",
-    metricHighlight: "92.4% Accuracy · 42ms p50 Latency",
-    description: "Transformer inference pipeline powered by fine-tuned DistilBERT, Feast online feature store, ONNX INT8 quantization, and Nginx canary traffic routing.",
-    technologies: ["DistilBERT", "PyTorch Lightning", "Feast", "Redis", "ONNX", "Docker"],
-    transformInit: { x: 70, y: -260, rotate: 6, scale: 0.65 }
-  },
-  {
-    id: "rag-document-qa",
-    title: "RAG Document Q&A",
-    tagline: "Enterprise Hybrid Document Intelligence",
-    category: "LangChain · Hybrid Retrieval · Citations",
-    link: "https://github.com/shreecloudai",
-    image: "/images/project_rag_qa.svg",
-    metricHighlight: "Hybrid SBERT + BM25 · Zero Hallucination",
-    description: "Enterprise PDF/TXT Q&A assistant combining dense Sentence-BERT vector search in FAISS with sparse BM25 keyword matching and chunk-level citations.",
-    technologies: ["LangChain", "FAISS", "BM25", "Claude API", "FastAPI", "Streamlit"],
-    transformInit: { x: -80, y: -290, rotate: -7, scale: 0.65 }
-  },
-  {
-    id: "agentic-suite",
-    title: "Agentic Content Suite",
-    tagline: "Planner → Writer → Critic Architecture",
-    category: "Multi-Agent Systems · Generative AI",
-    link: "https://github.com/shreecloudai",
-    image: "/images/project_agentic.svg",
-    metricHighlight: "75% Time Reduction · SSE Streaming",
-    description: "Autonomous multi-agent authoring pipeline with dynamic few-shot prompting, Pydantic structured output validation, rubric-based evaluation, and auto-retry loops.",
-    technologies: ["Anthropic Claude", "LangChain", "Pydantic", "FastAPI", "React"],
-    transformInit: { x: 75, y: -260, rotate: 6, scale: 0.65 }
-  },
-  {
-    id: "vision-classifier",
-    title: "Vision Classifier",
-    tagline: "CNN Transfer Learning & Grad-CAM",
-    category: "Computer Vision · Interpretability",
-    link: "https://github.com/shreecloudai",
-    image: "/images/project_vision.svg",
-    metricHighlight: "93.7% ResNet-18 Accuracy · S3 Registry",
-    description: "Transfer learning computer vision system on CIFAR-10 with Grad-CAM saliency heatmaps for model interpretability, MLflow tracking, and AWS S3 model registry.",
-    technologies: ["PyTorch", "TorchVision", "ResNet-18", "Grad-CAM", "MLflow", "AWS S3"],
-    transformInit: { x: -50, y: -280, rotate: -6, scale: 0.65 }
-  }
-];
+
 
 // 6 Flagship Projects formatted for @componentry/case-study-flip-stack (Glassmorphism & Black Aesthetic)
 const MEASURABLE_WORK_PROJECTS = [
@@ -591,10 +522,48 @@ export default function App() {
   const toolkitItems = content.toolkit?.length ? content.toolkit : DEFAULT_TOOLKIT_ITEMS;
   const exp = content.experience || {};
   const eduList = content.education || [];
+
+  const experienceItems = [
+    {
+      id: 'fourise',
+      src: '/images/experience/card_fourise.png',
+      alt: 'Fourise Software Solutions - Data Analytics & AI/ML Intern',
+      title: exp.company || 'Fourise Software Solutions Pvt. Ltd.',
+      subtitle: `${exp.role || 'Data Analytics Intern – AI/ML'} · ${exp.location || 'Pune'} (${exp.period || 'Jul 2026 – Present'})`
+    },
+    {
+      id: 'dypatil',
+      src: '/images/experience/card_dypatil.png',
+      alt: 'DY Patil Technical Campus - Master of Computer Applications (MCA)',
+      title: eduList[0]?.institution || 'DY Patil Technical Campus, Talsande',
+      subtitle: `${eduList[0]?.degree || 'Master of Computer Applications (MCA)'} · ${eduList[0]?.period || 'Jun 2025 – Mar 2027 (Expected)'}`
+    },
+    {
+      id: 'shivaji',
+      src: '/images/experience/card_shivaji.png',
+      alt: 'Shivaji University - Bachelor of Computer Applications (BCA)',
+      title: eduList[1]?.institution || 'Shivaji University, Kolhapur',
+      subtitle: `${eduList[1]?.degree || 'Bachelor of Computer Applications (BCA)'} · ${eduList[1]?.period || 'May 2023 – May 2025'}`
+    },
+    {
+      id: 'autonomous',
+      src: '/images/experience/card_autonomous.png',
+      alt: 'Autonomous Systems & Open Source Production Frameworks',
+      title: 'Autonomous Systems & Open Source',
+      subtitle: 'Agent-525 · Asteri Orchestration · PetrolSeq (2024 – Present)'
+    }
+  ];
   const about = content.about || {};
   const publicWorkList = content.publicWork || PUBLIC_WORK;
   const faqList = (content.faq?.length >= 10 ? content.faq : FAQS);
   const general = content.general || {};
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [portraitRevealed, setPortraitRevealed] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
+  const [typingPhase, setTypingPhase] = useState('none'); // 'none' | 'greeting' | 'headline' | 'done'
+  const [typedGreeting, setTypedGreeting] = useState('');
+  const [typedHeadline, setTypedHeadline] = useState('');
 
   const [headingIndex, setHeadingIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -602,6 +571,7 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDockVisible, setIsDockVisible] = useState(false);
   const [currentSection, setCurrentSection] = useState('home');
+  const [activeExpIdx, setActiveExpIdx] = useState(0);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -618,13 +588,74 @@ export default function App() {
   const lenisRef = useRef(null);
   const cardsRef = useRef([]);
 
-  // Cycle Hero Heading every 3.2s
+  // Cycle Hero Heading every 3.2s only after typing intro completes
   useEffect(() => {
+    if (isLoading || isTyping) return;
     const timer = setInterval(() => {
       setHeadingIndex((prev) => (prev + 1) % rotatingHeadings.length);
     }, 3200);
     return () => clearInterval(timer);
-  }, [rotatingHeadings.length]);
+  }, [isLoading, isTyping, rotatingHeadings.length]);
+
+  const greetingRef = useRef("I'm Pranav");
+  greetingRef.current = heroData.mainGreeting || "I'm Pranav";
+  const headlineRef = useRef("DEEP LEARNING SPECIALIST.");
+  headlineRef.current = rotatingHeadings[0] || "DEEP LEARNING SPECIALIST.";
+
+  // Bulletproof timestamp-based Typewriter Intro Sequence:
+  // "I'm Pranav" -> Headline -> TechText interactive takeover
+  useEffect(() => {
+    if (typingPhase !== 'greeting' && typingPhase !== 'headline') return;
+
+    let animId;
+    let startTimestamp = null;
+    const target = typingPhase === 'greeting' ? greetingRef.current : headlineRef.current;
+    const speed = typingPhase === 'greeting' ? 50 : 35; // ms per character
+    const totalDuration = target.length * speed;
+
+    const tick = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const elapsed = timestamp - startTimestamp;
+      const count = Math.min(target.length, Math.floor(elapsed / speed));
+
+      if (typingPhase === 'greeting') {
+        setTypedGreeting(target.slice(0, count));
+      } else {
+        setTypedHeadline(target.slice(0, count));
+      }
+
+      if (elapsed < totalDuration) {
+        animId = requestAnimationFrame(tick);
+      } else {
+        // Ensure complete string is rendered cleanly
+        if (typingPhase === 'greeting') {
+          setTypedGreeting(target);
+          setTimeout(() => {
+            setTypingPhase('headline');
+          }, 200);
+        } else {
+          setTypedHeadline(target);
+          setTimeout(() => {
+            setTypingPhase('done');
+            setIsTyping(false);
+          }, 450);
+        }
+      }
+    };
+
+    animId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animId);
+  }, [typingPhase]);
+
+  // Safety fallback if loading screen is skipped or hot-reloaded
+  useEffect(() => {
+    if (!isLoading && !portraitRevealed) {
+      setPortraitRevealed(true);
+      if (typingPhase === 'none') {
+        setTypingPhase('greeting');
+      }
+    }
+  }, [isLoading, portraitRevealed, typingPhase]);
 
   // Initialize Lenis + GSAP ScrollTrigger
   useEffect(() => {
@@ -655,8 +686,6 @@ export default function App() {
         { id: 'contact', match: 'contact' },
         { id: 'experience', match: 'experience' },
         { id: 'impact', match: 'impact' },
-        { id: 'projects', match: 'projects' },
-        { id: 'work-intro', match: 'projects' },
         { id: 'automation', match: 'automation' },
         { id: 'capabilities', match: 'capabilities' },
         { id: 'section2', match: 'skills' },
@@ -705,20 +734,20 @@ export default function App() {
         scrollTrigger: {
           trigger: "#section2",
           start: "top top",
-          end: "+=1900px",
+          end: "+=3000px",
           pin: true,
-          scrub: 0.35,
+          scrub: 0.8,
           anticipatePin: 1,
           invalidateOnRefresh: true
         }
       });
 
-      // Stage 1 & 2: Rest as peaceful closed bud (0 -> 0.08), then smoothly bloom to fully open (0.08 -> 0.62)
+      // Stage 1 & 2: Rest as peaceful closed bud (0 -> 0.08), then smoothly bloom to fully open (0.08 -> 0.72)
       revealTl.fromTo(flowerState,
         { frame: 0 },
         {
           frame: 197,
-          duration: 0.54,
+          duration: 0.64,
           ease: "none",
           onUpdate: () => {
             if (window.drawFlowerFrame) {
@@ -729,14 +758,14 @@ export default function App() {
         0.08
       );
 
-      // Stage 3: Statement container over flower stem fades in (progress 0.42 -> 0.62)
+      // Stage 3: Statement container over flower stem fades in (progress 0.46 -> 0.68)
       revealTl.fromTo(".yaros-reveal-content",
         { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.20, ease: "power1.out" },
-        0.42
+        { opacity: 1, y: 0, duration: 0.22, ease: "power1.out" },
+        0.46
       );
 
-      // Stage 4: Scrub illuminate words word-by-word across stem (progress 0.40 -> 0.78)
+      // Stage 4: Scrub illuminate words word-by-word across stem (progress 0.48 -> 0.86)
       if (words.length > 0) {
         revealTl.fromTo(words,
           { color: "rgba(255, 255, 255, 0.45)", textShadow: "0 0 10px rgba(255, 255, 255, 0.2)" },
@@ -747,113 +776,10 @@ export default function App() {
             duration: 0.38,
             ease: "none"
           },
-          0.40
+          0.48
         );
       }
     }
-
-    // 3.5. Single Unified 6-Box Stage (Morph from 3D Fanned Deck above into 2-Column Grid on Scroll)
-    // Uses exact yaros.me spring dynamics and transform targets
-    const isDesktop = window.innerWidth >= 1024;
-    const cards = gsap.utils.toArray(".yaros-case-card");
-    const selectedWorkHeader = document.getElementById("selected-work-header");
-
-    if (isDesktop && cards.length >= 6 && selectedWorkHeader) {
-      // yaros.me exact card rotations: 10, 15, -5, 5, -5, 5 and scale: 0.4
-      const deckConfig = [
-        { x: 595, y: -800,  rot: 10,  scale: 0.4, z: 1 },
-        { x: 115, y: -800,  rot: 15,  scale: 0.4, z: 2 },
-        { x: 545, y: -1315, rot: -5,  scale: 0.4, z: 3 },
-        { x: 65,  y: -1255, rot: 5,   scale: 0.4, z: 4 },
-        { x: 520, y: -1800, rot: -5,  scale: 0.4, z: 5 },
-        { x: 90,  y: -1800, rot: 5,   scale: 0.4, z: 6 }
-      ];
-
-      // Explicitly set initial deck state on mount
-      cards.slice(0, 6).forEach((card, i) => {
-        gsap.set(card, {
-          x: deckConfig[i].x,
-          y: deckConfig[i].y,
-          rotate: deckConfig[i].rot,
-          scale: deckConfig[i].scale,
-          zIndex: deckConfig[i].z,
-          transformOrigin: "center center",
-          boxShadow: "0 30px 65px -10px rgba(0, 0, 0, 0.95), 0 0 25px rgba(0, 0, 0, 0.6)"
-        });
-      });
-
-      // Left intro banner fades slightly and glides up as user scrolls past intro
-      gsap.to(".yaros-work-intro-left", {
-        opacity: 0.2,
-        y: -60,
-        ease: "yarosEase",
-        scrollTrigger: {
-          trigger: "#work-intro",
-          start: "bottom 80%",
-          end: "bottom 20%",
-          scrub: 0.5
-        }
-      });
-
-      // Master scrub timeline for the cards unstacking into the 2-column grid
-      const workTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#selected-work-header",
-          start: "top 95%",
-          end: "top 30%",
-          scrub: 0.8,
-          invalidateOnRefresh: true
-        }
-      });
-
-      // 1. "Selected work" header fades in & glides into place
-      workTl.fromTo(selectedWorkHeader,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.35, ease: "yarosEase" },
-        0
-      );
-
-      // 2. Deck skins fade out to reveal full project card content
-      workTl.to(".yaros-card-deck-skin", {
-        opacity: 0,
-        duration: 0.35,
-        ease: "yarosEase"
-      }, 0.05);
-
-      // 4. All 6 cards unstack and smoothly glide to their 2-column grid positions
-      cards.slice(0, 6).forEach((card, i) => {
-        workTl.to(card, {
-          x: 0,
-          y: 0,
-          rotate: 0,
-          scale: 1,
-          zIndex: 1,
-          boxShadow: "0 20px 50px rgba(0, 0, 0, 0.6)",
-          duration: 0.78,
-          ease: "yarosEase"
-        }, 0.08 + (i * 0.025));
-      });
-    } else if (cards.length > 0) {
-      // Mobile fallback (<1024px): Gentle fade-in in normal flow
-      cards.forEach((card) => {
-        gsap.fromTo(card,
-          { opacity: 0.4, y: 35 },
-          {
-            opacity: 1,
-            y: 0,
-            ease: "yarosEase",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              end: "top 55%",
-              scrub: 0.5
-            }
-          }
-        );
-      });
-    }
-
-
 
     // 5. Credential Metric Counters Animation
     const metricCards = document.querySelectorAll(".yaros-metric-card");
@@ -939,10 +865,9 @@ export default function App() {
 
   const scrollToSection = (id) => {
     setMobileMenuOpen(false);
-    const targetId = id === 'projects' ? 'work-intro' : id;
-    const el = document.getElementById(targetId) || document.getElementById(id);
+    const el = document.getElementById(id);
     if (el && lenisRef.current) {
-      const offset = (targetId === 'capabilities' || targetId === 'work-intro') ? -20 : -30;
+      const offset = (id === 'capabilities') ? -20 : -30;
       lenisRef.current.scrollTo(el, { offset });
     }
   };
@@ -952,10 +877,12 @@ export default function App() {
     : "I work at the intersection of machine learning and production engineering — building systems that retrieve, reason, evaluate, optimize, and deploy".split(" ");
 
   // Interactive Magnetic Dock Navigation Items (In exact top-to-bottom page order)
+  // Responsive auto-adjustment: Desktop = 9/9, Tablet = 6/9, Phone = 4/9
   const heroDockItems = [
     {
       id: 'skills',
       label: 'Tech Stack',
+      className: 'dock-always',
       isActive: currentSection === 'skills',
       icon: <Terminal size={19} />,
       onClick: () => scrollToSection('skills')
@@ -963,6 +890,7 @@ export default function App() {
     {
       id: 'capabilities',
       label: 'Work that Measurable',
+      className: 'dock-always',
       isActive: currentSection === 'capabilities',
       icon: <Layers size={19} />,
       onClick: () => scrollToSection('capabilities')
@@ -970,21 +898,15 @@ export default function App() {
     {
       id: 'automation',
       label: 'Automation',
+      className: 'dock-tablet-up',
       isActive: currentSection === 'automation',
       icon: <Workflow size={19} />,
       onClick: () => scrollToSection('automation')
     },
     {
-      id: 'projects',
-      label: 'Flagship Projects',
-      badge: '6',
-      isActive: currentSection === 'projects' || currentSection === 'work-intro',
-      icon: <Layers size={19} />,
-      onClick: () => scrollToSection('work-intro')
-    },
-    {
       id: 'metrics',
       label: 'Production Telemetry',
+      className: 'dock-desktop-only',
       isActive: currentSection === 'impact',
       icon: <Activity size={19} />,
       onClick: () => scrollToSection('impact')
@@ -992,6 +914,7 @@ export default function App() {
     {
       id: 'experience',
       label: 'Experience & Degrees',
+      className: 'dock-always',
       isActive: currentSection === 'experience',
       icon: <BookOpen size={19} />,
       onClick: () => scrollToSection('experience')
@@ -1000,6 +923,7 @@ export default function App() {
       id: 'github',
       label: 'GitHub Codebase',
       badge: '8',
+      className: 'dock-tablet-up',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
@@ -1011,6 +935,7 @@ export default function App() {
       id: 'huggingface',
       label: 'Hugging Face Hub',
       badge: '100+',
+      className: 'dock-desktop-only',
       icon: (
         <span style={{ fontSize: '18px', lineHeight: 1 }}>🤗</span>
       ),
@@ -1019,6 +944,7 @@ export default function App() {
     {
       id: 'linkedin',
       label: 'LinkedIn Connect',
+      className: 'dock-desktop-only',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -1029,14 +955,63 @@ export default function App() {
     {
       id: 'contact',
       label: 'Get in Touch',
+      className: 'dock-always',
       isActive: currentSection === 'contact',
       icon: <Mail size={19} />,
       onClick: () => scrollToSection('contact')
     }
   ];
 
+  const handleStartReveal = () => {
+    // 1. Portrait appears with upward glide (down to up) as soon as loader dissolve starts
+    setPortraitRevealed(true);
+
+    // 2. Typing indicator starts right as portrait glides up
+    setTimeout(() => {
+      setTypingPhase('greeting');
+    }, 280);
+  };
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      if (isLoading) {
+        lenisRef.current.stop();
+      } else {
+        lenisRef.current.start();
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 120);
+      }
+    }
+  }, [isLoading]);
+
   return (
-    <div className="yaros-viewport">
+    <>
+      {isLoading && (
+        <LoadingScreen 
+          onStartReveal={handleStartReveal} 
+          onComplete={handleLoadingComplete} 
+        />
+      )}
+      <div className="yaros-viewport">
+
+      {/* Persistent Fluid Silk Aurora WebGL Background (@componentry/silk-aurora) */}
+      <div className="yaros-silk-aurora-bg" aria-hidden="true">
+        <SilkAurora
+          className="h-full w-full min-h-0 bg-transparent"
+          speed={0.8}
+          intensity={1.05}
+          grain={0.65}
+          vignette={0.85}
+          mouseInfluence={0.85}
+          interactive={true}
+          style={{ width: '100%', height: '100%', minHeight: '100%' }}
+        />
+      </div>
 
       {/* ==============================================================
           1. HERO SECTION (EXACT YAROS.ME AESTHETIC)
@@ -1065,7 +1040,7 @@ export default function App() {
             onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
             aria-label="Homepage"
           >
-            {heroData.navBrand || "Pranav"}
+            {heroData.navBrand || "PranavJadhav"}
           </a>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -1088,7 +1063,6 @@ export default function App() {
             <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); setMobileMenuOpen(false); }}>TECH STACK</a>
             <a href="#capabilities" onClick={(e) => { e.preventDefault(); scrollToSection('capabilities'); setMobileMenuOpen(false); }}>WORK THAT MEASURABLE</a>
             <a href="#automation" onClick={(e) => { e.preventDefault(); scrollToSection('automation'); setMobileMenuOpen(false); }}>AUTOMATION</a>
-            <a href="#work-intro" onClick={(e) => { e.preventDefault(); scrollToSection('work-intro'); setMobileMenuOpen(false); }}>PROJECTS</a>
             <a href="#impact" onClick={(e) => { e.preventDefault(); scrollToSection('impact'); setMobileMenuOpen(false); }}>IMPACT</a>
             <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('experience'); setMobileMenuOpen(false); }}>EXPERIENCE</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setMobileMenuOpen(false); }}>CONTACT</a>
@@ -1104,11 +1078,11 @@ export default function App() {
         {/* Hero Centerpiece: Portrait + Text Overlap */}
         <div className="yaros-hero-center">
           
-          {/* Portrait Layer: Exact silhouette portrait with teal/cyan rim lighting */}
-          <div className="yaros-portrait-container">
+          {/* Portrait Layer: Silhouette portrait with cyan rim lighting & upward entrance */}
+          <div className={`yaros-portrait-container ${portraitRevealed ? 'portrait-revealed' : 'portrait-hidden'}`}>
             <img 
-              src="/images/yaros_hero_exact.png" 
-              alt="Portrait silhouette of Pranav Jadhav" 
+              src="/images/pranav_hero.png" 
+              alt="Pranav Jadhav - Generative AI Engineer" 
               className="yaros-portrait-img" 
             />
           </div>
@@ -1119,19 +1093,79 @@ export default function App() {
             {/* Ambient Luminous Text Halo Aura */}
             <div className="yaros-hero-text-glow-aura" aria-hidden="true"></div>
 
-            {/* "I'm Pranav" with intense white luminous glow */}
-            <h1 className="yaros-headline-pre">
-              {heroData.mainGreeting || "I'm Pranav"}
-            </h1>
+            {/* "I'm Pranav" with Typewriter Intro & ReactBits TechText blueprint vector animation */}
+            <h1 className="sr-only">{heroData.mainGreeting || "I'm Pranav"} - {rotatingHeadings[headingIndex] || rotatingHeadings[0]}</h1>
+            <div className="yaros-headline-pre-tech-wrap" aria-hidden="true">
+              {isTyping && typingPhase !== 'done' ? (
+                <span className="yaros-typed-text">
+                  {typedGreeting}
+                  {typingPhase === 'greeting' && <span className="yaros-typing-cursor"></span>}
+                </span>
+              ) : (
+                <TechText
+                  text={heroData.mainGreeting || "I'm Pranav"}
+                  fontFamily="'Instrument Serif', Georgia, serif"
+                  fontWeight={400}
+                  fontSize="inherit"
+                  color="currentColor"
+                  accentColor="#38bdf8"
+                  align="center"
+                  reach={200}
+                  strokeWidth={1.5}
+                  lineStyle="dashed"
+                  dashLength={4}
+                  dashGap={2}
+                  specks={16}
+                  selection={true}
+                  labels={true}
+                  draggable={true}
+                  bounce={0.4}
+                  sweep={true}
+                  speed={1}
+                  clickKick={true}
+                  intro="none"
+                  guides={false}
+                  className="yaros-tech-text-hero"
+                />
+              )}
+            </div>
 
-            {/* Cycling Headline in Instrument Serif uppercase */}
-            <div className="yaros-headline-main-wrapper">
-              <div 
-                key={headingIndex} 
-                className="yaros-headline-main animate-title"
-              >
-                {rotatingHeadings[headingIndex] || rotatingHeadings[0]}
-              </div>
+            {/* Cycling Headline with Typewriter Intro & ReactBits TechText blueprint vector animation */}
+            <div className="yaros-headline-main-wrapper" aria-hidden="true">
+              {isTyping && typingPhase !== 'done' ? (
+                <span className="yaros-typed-text">
+                  {typedHeadline}
+                  {typingPhase === 'headline' && <span className="yaros-typing-cursor"></span>}
+                </span>
+              ) : (
+                <TechText
+                  key={headingIndex}
+                  text={rotatingHeadings[headingIndex] || rotatingHeadings[0]}
+                  fontFamily="'Instrument Serif', Georgia, serif"
+                  fontWeight={400}
+                  fontSize="inherit"
+                  letterSpacing={0.02}
+                  color="currentColor"
+                  accentColor="#38bdf8"
+                  align="center"
+                  reach={200}
+                  strokeWidth={1.5}
+                  lineStyle="dashed"
+                  dashLength={4}
+                  dashGap={2}
+                  specks={16}
+                  selection={true}
+                  labels={true}
+                  draggable={true}
+                  bounce={0.4}
+                  sweep={true}
+                  speed={1}
+                  clickKick={true}
+                  intro="none"
+                  guides={false}
+                  className="yaros-tech-text-hero"
+                />
+              )}
             </div>
 
             {/* Contact Translucent Pill Button */}
@@ -1200,16 +1234,18 @@ export default function App() {
           {/* 3D Blooming Magnolia Flower Canvas (Scrubbed 0 -> 197 frames) */}
           <Model3DScrollCanvas />
 
-          {/* Statement Text Positioned OVER the flower stem */}
+          {/* Statement Text Positioned OVER the flower stem with @componentry/text-repel physics */}
           <div className="yaros-reveal-content">
-            <p className="yaros-reveal-statement">
-              {revealWords.map((word, i) => (
-                <React.Fragment key={i}>
-                  <span className="reveal-word">{word}</span>
-                  {" "}
-                </React.Fragment>
-              ))}
-            </p>
+            <div className="yaros-reveal-statement">
+              <TextRepel
+                words={revealWords}
+                className="justify-center text-center w-full"
+                wordClassName="reveal-word"
+                radius={130}
+                strength={50}
+                mode="repel"
+              />
+            </div>
           </div>
 
         </div>
@@ -1250,122 +1286,10 @@ export default function App() {
         <ScrollSplitCard
           imageSrc="/images/split_card_cover.jpg"
           cards={automationItems}
+          title={content.automation?.heading || "From Manual Processes to AI-Powered Systems."}
+          subtitle={content.automation?.subheading || "AI That Doesn’t Just Think - It Executes"}
+          scrollText="Scroll down"
         />
-      </section>
-
-      {/* ==============================================================
-          6. WORK INTRO STAGE (EXACT YAROS.ME AESTHETIC - IMAGE 1)
-          Dedicated section:
-          - Left side: "Engineering that delivers results."
-          - Right side: Desktop anchor where the 6 cards cluster into a 3D fanned deck
-         ============================================================== */}
-      <section className="yaros-work-intro-section" id="work-intro">
-        <div className="yaros-work-intro-container">
-          
-          {/* Left Intro Banner (Image 1) */}
-          <div className="yaros-work-intro-left">
-            <h2 className="yaros-work-intro-title">
-              Engineering that<br />
-              delivers <span className="yaros-title-italic">results.</span>
-            </h2>
-            <div className="yaros-work-intro-desc-wrap">
-              <p className="yaros-work-intro-sub-bold">
-                Strategic AI engineering that drives impact, not just demos.
-              </p>
-              <p className="yaros-work-intro-sub-desc">
-                Crafting scalable models and production systems built to perform, evaluate, and deliver.
-              </p>
-            </div>
-            <button 
-              className="yaros-work-intro-btn"
-              onClick={() => scrollToSection('contact')}
-            >
-              Contact
-            </button>
-          </div>
-
-          {/* Right Anchor: Space where the 6 fanned cards hover on initial view */}
-          <div className="yaros-work-intro-deck-anchor" aria-hidden="true"></div>
-
-        </div>
-      </section>
-
-      {/* ==============================================================
-          7. SELECTED WORK / 2-COLUMN GRID SECTION (IMAGE 2)
-          On scroll, the 6 boxes unstack from the deck above and smoothly
-          separate into this 2-column grid directly under "Selected work".
-         ============================================================== */}
-      <section className="yaros-projects-section" id="projects">
-        
-        {/* Selected Work Title (Image 2) */}
-        <div className="yaros-projects-subheading-wrap" id="selected-work-header">
-          <h2 className="yaros-projects-title">Selected work</h2>
-          <p className="yaros-projects-sub">
-            <span className="yaros-title-italic">Production-grade.</span> Evaluated. Scalable.
-          </p>
-        </div>
-
-        {/* Exactly ONE set of 6 boxes: 2-Column Full-Bleed Featured Work Grid */}
-        <div className="yaros-cases-grid-wrapper">
-          <div className="yaros-cases-grid">
-            {PRANAV_PROJECTS.slice(0, 6).map((project, index) => (
-              <div 
-                key={project.id} 
-                className={`yaros-case-card yaros-case-card-${index}`}
-                onClick={() => {
-                  window.open(project.link, '_blank');
-                }}
-              >
-                {/* Visual deck styling overlay / skin for deck state */}
-                <div className={`yaros-card-deck-skin deck-skin-${index}`}></div>
-
-                <div className="yaros-case-card-inner">
-                  <img 
-                    src={project.image} 
-                    alt={`${project.title} - ${project.tagline}`} 
-                    className="yaros-case-bg-img" 
-                    loading="lazy" 
-                  />
-                  
-                  {/* Top Badge: Metric Highlight */}
-                  <div style={{ position: 'absolute', top: '24px', left: '24px', zIndex: 10 }}>
-                    <div style={{ 
-                      display: 'inline-flex', 
-                      alignItems: 'center', 
-                      gap: '8px', 
-                      background: 'rgba(10, 15, 29, 0.85)', 
-                      backdropFilter: 'blur(10px)', 
-                      padding: '8px 16px', 
-                      borderRadius: '999px', 
-                      border: '1px solid rgba(56, 189, 248, 0.25)',
-                      color: '#38BDF8',
-                      fontSize: '0.8rem',
-                      fontFamily: "'Fira Code', monospace",
-                      fontWeight: 600
-                    }}>
-                      <Activity size={13} />
-                      <span>{project.metricHighlight}</span>
-                    </div>
-                  </div>
-
-                  {/* Centered Title & "Inspect Repo" Pill Overlay */}
-                  <div className="yaros-case-hover-overlay">
-                    <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
-                      {project.category}
-                    </span>
-                    <h3 className="yaros-case-title">{project.title}</h3>
-                    <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.75)', maxWidth: '420px', textAlign: 'center', margin: '8px 0 16px' }}>
-                      {project.tagline}
-                    </p>
-                    <div className="yaros-case-take-look-pill">
-                      View Architecture <ArrowUpRight size={14} style={{ display: 'inline', marginLeft: '4px' }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ==============================================================
@@ -1400,10 +1324,10 @@ export default function App() {
           {/* HorizonX Orbit Cards: Exact Architecture (https://horizonx.so/tools/orbit-cards) */}
           <OrbitCards
             items={technicalMetrics}
-            orbitRadius={310}
-            cardWidth={224}
-            cardHeight={210}
-            duration={24}
+            orbitRadius={380}
+            cardWidth={285}
+            cardHeight={235}
+            duration={26}
             direction="clockwise"
             autoplay={true}
             pauseOnHover={true}
@@ -1424,62 +1348,35 @@ export default function App() {
             <p className="yaros-about-sub">Engineering background.</p>
           </div>
 
-          {/* Professional Role Card */}
-          <div className="yaros-experience-card" style={{ 
-            borderRadius: '24px', 
-            padding: '36px', 
-            marginBottom: '40px',
-            backdropFilter: 'blur(16px)'
+          {/* WebGL Prism Coverflow Carousel with Full Technical Content on Cards */}
+          <div className="yaros-experience-prism-wrap" style={{ 
+            position: 'relative', 
+            width: '100%', 
+            marginBottom: '40px'
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
-              <div>
-                <span className="yaros-section-tag" style={{ display: 'inline-block', marginBottom: '8px' }}>{exp.badge || "Internship · Lead Role"}</span>
-                <h3 className="yaros-exp-company" style={{ fontSize: '1.6rem', margin: 0, fontWeight: 700 }}>{exp.company || "Fourise Software Solutions Pvt. Ltd."}</h3>
-                <p className="yaros-exp-role" style={{ fontSize: '1.05rem', margin: '4px 0 0', fontWeight: 500 }}>{exp.role || "Data Analytics Intern – AI/ML"}</p>
-              </div>
-              <div style={{ textAlign: 'right' }}>
-                <span className="yaros-exp-period-pill" style={{ 
-                  display: 'inline-block', 
-                  padding: '6px 14px', 
-                  borderRadius: '999px', 
-                  fontSize: '0.85rem', 
-                  fontWeight: 600,
-                  fontFamily: "'Fira Code', monospace"
-                }}>
-                  {exp.location || "Pune"} · {exp.period || "Jul 2026 – Present"}
-                </span>
-              </div>
-            </div>
-
-            <p className="yaros-exp-overview" style={{ lineHeight: '1.65', marginBottom: '20px' }}>
-              {exp.leadSummary || "Led an engineering team building GRGPT, a specialized domain-restricted RAG assistant for Maharashtra Government Resolutions and tenders."}
-            </p>
-
-            <ul className="yaros-service-bullets" style={{ margin: 0 }}>
-              {(exp.bullets || [
-                "Built backend, RAG pipeline and embeddings model over 100K+ Maharashtra GR and tender PDFs.",
-                "Indexed 1M+ chunks (1,037,086 vectors) in Qdrant, achieving 2–3 second relevant-context retrieval.",
-                "Implemented frontend chat logic and UI changes for bilingual Marathi and English querying.",
-                "Conducted structured verification and rigorous testing focused on domain answer correctness and zero-hallucination guardrails."
-              ]).map((bullet, idx) => (
-                <li key={idx} className="yaros-service-bullet-item">
-                  <span className="bullet-slash">//</span>
-                  <span className="bullet-text">{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Education Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '50px' }}>
-            {eduList.map((edu, idx) => (
-              <div key={idx} className="yaros-education-card" style={{ borderRadius: '20px', padding: '28px' }}>
-                <div className="yaros-edu-type" style={{ color: edu.accentColor || '#0284c7', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px', fontWeight: 600 }}>{edu.degreeType}</div>
-                <h4 className="yaros-edu-degree" style={{ fontSize: '1.25rem', margin: '0 0 6px', fontWeight: 700 }}>{edu.degree}</h4>
-                <p className="yaros-edu-institution" style={{ fontSize: '0.9rem', margin: '0 0 10px' }}>{edu.institution}</p>
-                <p className="yaros-edu-period" style={{ fontSize: '0.85rem', margin: 0, fontFamily: "'Fira Code', monospace" }}>{edu.period}</p>
-              </div>
-            ))}
+            <PrismCarousel
+              items={experienceItems}
+              aspect={1.63}
+              size={0.84}
+              neighborScale={0.70}
+              gap={26}
+              radius={24}
+              saturation={0}
+              dim={0.25}
+              sweep={1}
+              sweepDuration={1.1}
+              dispersion={1.2}
+              autoplay={true}
+              interval={5.5}
+              loop={true}
+              captions={false}
+              controls={true}
+              draggable={true}
+              wheel={false}
+              pauseOnHover={true}
+              onIndexChange={(idx) => setActiveExpIdx(idx)}
+              style={{ height: '660px', minHeight: '560px', width: '100%' }}
+            />
           </div>
 
           {/* About Narrative Box */}
@@ -1899,6 +1796,7 @@ export default function App() {
         />
       </div>
 
-    </div>
+      </div>
+    </>
   );
 }

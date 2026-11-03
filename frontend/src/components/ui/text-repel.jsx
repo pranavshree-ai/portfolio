@@ -11,8 +11,9 @@ import {
 
 /**
  * RepelLetter
- * Individual character that calculates distance from cursor and displaces
- * according to quadratic falloff with spring physics.
+ * Official @componentry/text-repel individual letter physics.
+ * Calculates displacement based on cursor distance from the unperturbed letter origin
+ * using quadratic falloff and Framer Motion spring physics with subtle rotational tilt.
  */
 function RepelLetter({
   letter,
@@ -35,25 +36,36 @@ function RepelLetter({
   const springX = useSpring(x, { stiffness, damping, mass });
   const springY = useSpring(y, { stiffness, damping, mass });
 
-  // Subtle tilt proportional to horizontal displacement
+  // Subtle tilt proportional to horizontal displacement (exact Componentry behavior)
   const rotate = useTransform(springX, (v) => v * 0.3);
 
+  // Capture original unperturbed resting position relative to the container
   const capture = useCallback(() => {
     if (!ref.current) return;
     const container = ref.current.closest("[data-text-repel]");
     if (!container) return;
     const cr = container.getBoundingClientRect();
     const lr = ref.current.getBoundingClientRect();
-    originX.current = lr.left - cr.left + lr.width / 2;
-    originY.current = lr.top - cr.top + lr.height / 2;
-  }, []);
+    const currentX = x.get() || 0;
+    const currentY = y.get() || 0;
+    // Subtract current displacement so anchor remains unperturbed
+    originX.current = (lr.left - currentX) - cr.left + lr.width / 2;
+    originY.current = (lr.top - currentY) - cr.top + lr.height / 2;
+  }, [x, y]);
 
   useEffect(() => {
     const raf = requestAnimationFrame(capture);
     window.addEventListener("resize", capture);
+    window.addEventListener("scroll", capture, { passive: true });
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        requestAnimationFrame(capture);
+      });
+    }
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", capture);
+      window.removeEventListener("scroll", capture);
     };
   }, [capture]);
 
@@ -61,22 +73,25 @@ function RepelLetter({
     const update = () => {
       const mx = mouseX.get();
       const my = mouseY.get();
+
+      // Cursor is off-screen or outside influence zone
       if (mx < -5000 || my < -5000) {
         x.set(0);
         y.set(0);
         return;
       }
 
+      // Lazy capture if initial mount was unmeasured
       if (originX.current === 0 && originY.current === 0) {
         capture();
       }
 
       const dx = originX.current - mx;
       const dy = originY.current - my;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+      const distance = Math.hypot(dx, dy);
 
       if (distance < radius && distance > 0) {
-        // Quadratic falloff for natural-feeling magnetic force
+        // Quadratic falloff — identical to official @componentry/text-repel
         const force = Math.pow(1 - distance / radius, 2) * strength;
         const angle = Math.atan2(dy, dx);
         const dir = mode === "attract" ? -1 : 1;
@@ -116,10 +131,9 @@ function RepelLetter({
 }
 
 /**
- * TextRepel Component
- * Exact Componentry implementation (@componentry/text-repel)
- * Interactive physics-based magnetic repel/attract typography.
- * Supports paragraphs, word wrapping, and scroll reveal integration.
+ * TextRepel
+ * Exact @componentry/text-repel physics, adapted for GSAP pinned sections.
+ * Tracks mouse position smoothly across the entire Section 2 area with zero layout thrashing.
  */
 export function TextRepel({
   text,
@@ -127,8 +141,8 @@ export function TextRepel({
   className,
   letterClassName,
   wordClassName,
-  radius = 120,
-  strength = 45,
+  radius = 130,
+  strength = 50,
   mode = "repel",
   stiffness = 180,
   damping = 14,
@@ -138,45 +152,54 @@ export function TextRepel({
   const mouseX = useMotionValue(-9999);
   const mouseY = useMotionValue(-9999);
 
-  // Parse words array or split text
+  // Parse input — accept either a `words` array (from GSAP scrub) or a plain `text` string
   const wordsList = words || (text ? text.split(" ") : []);
+  const ariaLabel = text || wordsList.join(" ");
 
-  const handlePointerMove = (e) => {
+  const updateCoordinates = useCallback((clientX, clientY) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  };
+    mouseX.set(clientX - rect.left);
+    mouseY.set(clientY - rect.top);
+  }, [mouseX, mouseY]);
 
-  const handlePointerLeave = () => {
+  const resetCoordinates = useCallback(() => {
     mouseX.set(-9999);
     mouseY.set(-9999);
-  };
-
-  // Also listen on parent #section2 so cursor approaching from flower petals triggers repel
-  useEffect(() => {
-    const section = containerRef.current?.closest("#section2") || containerRef.current;
-    if (!section) return;
-
-    const onSectionMouseMove = (e) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseX.set(e.clientX - rect.left);
-      mouseY.set(e.clientY - rect.top);
-    };
-
-    const onSectionMouseLeave = () => {
-      mouseX.set(-9999);
-      mouseY.set(-9999);
-    };
-
-    section.addEventListener("mousemove", onSectionMouseMove);
-    section.addEventListener("mouseleave", onSectionMouseLeave);
-    return () => {
-      section.removeEventListener("mousemove", onSectionMouseMove);
-      section.removeEventListener("mouseleave", onSectionMouseLeave);
-    };
   }, [mouseX, mouseY]);
+
+  useEffect(() => {
+    // Listen globally for smooth cursor approach from any direction
+    const onPointerMove = (e) => {
+      const section = document.getElementById("section2");
+      if (section) {
+        const sRect = section.getBoundingClientRect();
+        // Check if cursor is within or near the visible Section 2
+        if (
+          e.clientY >= sRect.top - 50 &&
+          e.clientY <= sRect.bottom + 50 &&
+          e.clientX >= sRect.left - 50 &&
+          e.clientX <= sRect.right + 50
+        ) {
+          updateCoordinates(e.clientX, e.clientY);
+          return;
+        }
+      }
+      resetCoordinates();
+    };
+
+    const onPointerLeave = () => {
+      resetCoordinates();
+    };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerleave", onPointerLeave, { passive: true });
+
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerleave", onPointerLeave);
+    };
+  }, [updateCoordinates, resetCoordinates]);
 
   return (
     <div
@@ -186,9 +209,8 @@ export function TextRepel({
         "inline-flex flex-wrap items-center justify-center cursor-default select-none",
         className
       )}
-      onMouseMove={handlePointerMove}
-      onMouseLeave={handlePointerLeave}
-      aria-label={text || wordsList.join(" ")}
+      onPointerMove={(e) => updateCoordinates(e.clientX, e.clientY)}
+      aria-label={ariaLabel}
     >
       {wordsList.map((word, wordIndex) => (
         <span
@@ -217,4 +239,3 @@ export function TextRepel({
 }
 
 export default TextRepel;
-

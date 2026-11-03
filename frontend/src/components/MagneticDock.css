@@ -223,35 +223,88 @@
   pointer-events: auto;
 }
 
-@media (max-width: 768px) {
-  .yaros-floating-dock-wrapper {
-    bottom: max(12px, env(safe-area-inset-bottom, 12px));
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0 10px;
-    box-sizing: border-box;
+/* ==============================================================
+   RESPONSIVE DOCK ADAPTATION
+   - Desktop (> 1024px): Full 9/9 icons (PC/Laptop view preserved 100%)
+   - Tablet (641px - 1024px): Auto-adjust to 6/9 icons
+   - Phone (<= 640px): Auto-adjust to 4/9 icons with enlarged touch UX
+   ============================================================== */
+
+/* Tablet (641px - 1024px): Show exactly 6 of 9 icons */
+@media (max-width: 1024px) {
+  .magnetic-dock-item.dock-desktop-only,
+  .magnetic-dock-item[data-dock-id="metrics"],
+  .magnetic-dock-item[data-dock-id="huggingface"],
+  .magnetic-dock-item[data-dock-id="linkedin"] {
+    display: none !important;
   }
-  .yaros-floating-dock-wrapper.dock-hidden {
-    transform: translate(-50%, 28px);
+
+  .magnetic-dock-container {
+    padding: 8px 16px;
+    gap: 12px;
+  }
+
+  .magnetic-dock-tooltip {
+    display: none !important;
   }
 }
 
-@media (max-width: 768px) {
+/* Phone (<= 640px): Show exactly 4 of 9 primary icons with enhanced touch UX */
+@media (max-width: 640px) {
+  .magnetic-dock-item.dock-desktop-only,
+  .magnetic-dock-item.dock-tablet-up,
+  .magnetic-dock-item[data-dock-id="metrics"],
+  .magnetic-dock-item[data-dock-id="huggingface"],
+  .magnetic-dock-item[data-dock-id="linkedin"],
+  .magnetic-dock-item[data-dock-id="automation"],
+  .magnetic-dock-item[data-dock-id="github"] {
+    display: none !important;
+  }
+
+  .yaros-floating-dock-wrapper {
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .yaros-floating-dock-wrapper.dock-hidden {
+    transform: translate(-50%, 36px);
+  }
+
   .magnetic-dock-container {
-    padding: 8px 12px;
-    gap: 8px;
-    max-width: 92vw;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    padding: 8px 18px;
+    gap: 14px;
+    border-radius: 9999px;
+    max-width: calc(100vw - 32px);
+    overflow: visible;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8),
+                0 0 24px rgba(56, 189, 248, 0.16),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
-  .magnetic-dock-container::-webkit-scrollbar {
-    display: none;
+
+  .magnetic-dock-item {
+    width: 48px !important;
+    height: 48px !important;
   }
+
+  .magnetic-dock-icon-capsule {
+    border-radius: 14px;
+  }
+
+  .magnetic-dock-glyph {
+    width: 60%;
+    height: 60%;
+  }
+
   .magnetic-dock-tooltip {
-    display: none;
+    display: none !important;
   }
+
   .yaros-hero-actions-row {
     flex-direction: column;
     gap: 12px;

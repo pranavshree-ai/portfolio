@@ -659,7 +659,7 @@ export default function AdminPage() {
                     <input
                       type="text"
                       className="admin-input"
-                      value={draft.hero?.navBrand || 'Pranav'}
+                      value={draft.hero?.navBrand || 'PranavJadhav'}
                       onChange={(e) => setDraft(prev => ({ ...prev, hero: { ...prev.hero, navBrand: e.target.value } }))}
                     />
                   </div>

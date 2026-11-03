@@ -87,7 +87,8 @@ function DockItem({
       onPointerEnter={handlePointerEnter}
       onPointerLeave={onHoverEnd}
       onBlur={onHoverEnd}
-      className={`magnetic-dock-item ${item.isActive ? 'active' : ''}`}
+      data-dock-id={item.id}
+      className={`magnetic-dock-item ${item.isActive ? 'active' : ''} ${item.className || ''}`}
       style={{
         width: reducedMotion ? iconSize : size,
         height: reducedMotion ? iconSize : size,

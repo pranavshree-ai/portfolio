@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="lcGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2EA44F" stop-opacity="0.35"/><stop offset="100%" stop-color="#000000" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#141824"/><stop offset="100%" stop-color="#080a0f"/></linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#lcGlow)"/>
+  <g transform="translate(54, 54) scale(0.92)">
+    <path d="M18 46 C18 30 30 18 46 18 C62 18 74 30 74 46 C74 62 62 74 46 74 C30 74 18 62 18 46 Z" fill="none" stroke="#2EA44F" stroke-width="8"/>
+    <path d="M46 18 L76 46 L46 74" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="46" r="9" fill="#2EA44F"/>
+  </g>
+</svg>

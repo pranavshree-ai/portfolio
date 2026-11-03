@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="wfGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#146EF5" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#wfGlow)"/>
+  <g transform="translate(48, 62) scale(1.05)">
+    <!-- Webflow Stylized W -->
+    <path d="M98 0 L66 68 L44 24 L22 68 L0 0 H24 L34 32 L46 8 L64 45 L76 0 Z" fill="#146EF5"/>
+    <path d="M56 46 L46 25 L34 46 L24 25 L4 76 H28 L40 50 L52 76 H76 Z" fill="#4353FF" opacity="0.95"/>
+  </g>
+</svg>

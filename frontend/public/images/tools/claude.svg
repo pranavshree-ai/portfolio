@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="clGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D97706" stop-opacity="0.35"/><stop offset="100%" stop-color="#000000" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#141824"/><stop offset="100%" stop-color="#080a0f"/></linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#clGlow)"/>
+  <g transform="translate(60, 60) scale(0.8)">
+    <path d="M50 0 L58 35 L93 25 L73 55 L100 78 L65 78 L60 100 L40 78 L5 78 L32 55 L12 25 L47 35 Z" fill="#D97706"/>
+    <circle cx="50" cy="55" r="16" fill="#FDE68A"/>
+  </g>
+</svg>

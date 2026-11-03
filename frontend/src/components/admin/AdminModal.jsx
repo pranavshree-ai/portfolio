@@ -514,7 +514,7 @@ export default function AdminModal() {
                           <input
                             type="text"
                             className="adm-input"
-                            value={draft.hero?.navBrand || ''}
+                            value={draft.hero?.navBrand || 'PranavJadhav'}
                             onChange={(e) => setDraft(prev => ({
                               ...prev,
                               hero: { ...prev.hero, navBrand: e.target.value }

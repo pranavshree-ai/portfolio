@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="hfGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD21E" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="70" fill="url(#hfGlow)"/>
+  <g transform="translate(56, 56) scale(0.88)">
+    <!-- Hugging Face Yellow Smiling Emoji Face with open hugging hands -->
+    <circle cx="50" cy="50" r="44" fill="#FFD21E"/>
+    <!-- Eyes -->
+    <path d="M28 42 Q36 34 44 42" stroke="#000" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M56 42 Q64 34 72 42" stroke="#000" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- Smile -->
+    <path d="M30 62 Q50 82 70 62" stroke="#000" stroke-width="5.5" fill="#FFF" stroke-linecap="round"/>
+    <!-- Cheeks -->
+    <circle cx="24" cy="54" r="6" fill="#FF7878" opacity="0.8"/>
+    <circle cx="76" cy="54" r="6" fill="#FF7878" opacity="0.8"/>
+  </g>
+</svg>

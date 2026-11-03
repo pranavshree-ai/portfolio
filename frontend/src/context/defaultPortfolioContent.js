@@ -10,7 +10,7 @@ export const DEFAULT_PORTFOLIO_CONTENT = {
     linkedinUrl: "https://www.linkedin.com/in/pranav-jadhav-mlops"
   },
   hero: {
-    navBrand: "Pranav",
+    navBrand: "PranavJadhav",
     mainGreeting: "I'm Pranav",
     roleBadge: "Production ML & LLMOps Engineer",
     rotatingHeadings: [
